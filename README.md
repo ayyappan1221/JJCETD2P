@@ -188,7 +188,7 @@ Department of Computer Science and Engineering
 
 J.J. College of Engineering and Technology
 
-Academic Year: 2026–2027
+Academic Year: 2024–2028
 
 ---
 
