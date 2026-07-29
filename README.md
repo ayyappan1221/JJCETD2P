@@ -201,6 +201,30 @@ Develop a secure web-based inventory management platform that provides:
 
 ---
 
+# 🔷 Flow Diagrams
+
+## System Architecture
+
+![System Architecture Workflow](FlowDiagrams/System%20Architecture%20Workflow.png)
+
+## Project Development Workflow
+
+![Project Development Workflow](FlowDiagrams/Project%20Development%20Workflow.png)
+
+## Overall System Workflow
+
+![Overall System Workflow](FlowDiagrams/Overall%20System%20Workflow.png)
+
+## Inventory Workflow
+
+![Inventory Workflow](FlowDiagrams/Inventory%20Workflow.png)
+
+## Authentication Workflow
+
+![Authentication Workflow](FlowDiagrams/Authentication%20Workflow.png)
+
+---
+
 # 🗄 Database Tables
 
 - Users
