@@ -1,148 +1,216 @@
-# JJCETD2P# D2P Lab Operations and Component Management System
+# 🚀 JJCETD2P
 
-> A Python-based Inventory and Lab Operations Management System developed for the D2P (Design to Product) Laboratory at J.J. College of Engineering and Technology.
+> **D2P Lab Operations and Component Management System**
+>
+> A modern FastAPI-based Inventory and Laboratory Operations Management System developed for the Design to Product (D2P) Laboratory at **J.J. College of Engineering and Technology (JJCET)**.
 
----
-
-## 📖 About the Project
-
-The **D2P Lab Operations and Component Management System** is a centralized application designed to digitize the inventory and daily operations of the Design to Product (D2P) Laboratory.
-
-Currently, laboratory components are managed manually using notebooks, making it difficult to track stock availability, issued components, damaged items, and student transactions.
-
-This project aims to replace the manual process with a secure, user-friendly, and efficient digital system.
-
----
-
-## 🏫 Institution
-
-**J.J. College of Engineering and Technology (JJCET)**  
-Ammapettai, Tiruchirappalli, Tamil Nadu, India
-
-Official Website:
-https://jjcet.ac.in/
-
-JJCET is an autonomous engineering institution established in 1994, approved by AICTE and affiliated with Anna University. It offers undergraduate and postgraduate engineering programs and supports innovation through facilities such as its Design-to-Product (D2P) laboratory. :contentReference[oaicite:0]{index=0}
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?logo=fastapi)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)
+![License](https://img.shields.io/badge/License-Academic-green)
 
 ---
 
-## 🎯 Problem Statement
+# 📖 About
 
-The current D2P laboratory follows a manual inventory management process.
+The **D2P Lab Operations and Component Management System (JJCETD2P)** is a centralized web application designed to digitize and automate the inventory and daily operations of the **Design to Product (D2P) Laboratory**.
 
-Problems include:
+The current laboratory workflow relies on manual registers for maintaining component inventory, issuing materials, tracking returns, and managing stock.
 
-- Manual notebook records
-- Difficult stock tracking
-- No real-time availability
-- Lost or damaged component tracking issues
-- Time-consuming issue and return process
-- No digital reports
-- Difficult audit process
+This project replaces the manual process with a secure, scalable, and modern digital platform.
+
+This application is being developed as a **Capstone Project** for the Department of Computer Science and Engineering.
 
 ---
 
-## 💡 Proposed Solution
+# 🏫 Institution
 
-Develop a Python-based application that allows:
+**J.J. College of Engineering and Technology (JJCET)**
 
-- Digital inventory management
-- Student registration
-- Component availability checking
-- Component issue & return
-- Damage and loss tracking
-- Stock monitoring
-- Report generation
-- User authentication
-- Audit logging
+📍 Ammapettai, Tiruchirappalli, Tamil Nadu, India
+
+🌐 https://jjcet.ac.in/
 
 ---
 
-## 👥 Users
+# 🎯 Problem Statement
 
-- Student
-- D2P In-Charge
-- Management
-- System Administrator
+Current D2P laboratory management faces several challenges:
+
+- Manual register maintenance
+- Difficult inventory tracking
+- No centralized database
+- Delayed issue & return process
+- Missing stock records
+- Limited reporting
+- No audit trail
+- Poor inventory visibility
 
 ---
 
-## 🚀 Features
+# 💡 Proposed Solution
 
-### Student
-- Register
-- Login
+Develop a secure web-based inventory management platform that provides:
+
+- Digital Inventory Management
+- Student Authentication
+- Component Issue & Return
+- Borrow Request Workflow
+- Real-time Stock Monitoring
+- Damage & Loss Tracking
+- Reports & Analytics
+- Role-Based Access Control
+- Audit Logging
+- Administrative Dashboard
+
+---
+
+# 👥 User Roles
+
+- 👨‍🎓 Student
+- 👨‍🏫 D2P In-Charge
+- 👨‍💼 Management
+- 👨‍💻 Administrator
+
+---
+
+# 🚀 Features
+
+## Student
+
+- Register & Login
 - Search Components
-- Check Availability
+- View Availability
 - Request Components
-- View Borrow History
+- Borrow History
 
-### D2P In-Charge
+## D2P In-Charge
+
 - Manage Components
+- Manage Categories
 - Manage Inventory
 - Approve Requests
 - Issue Components
-- Return Components
-- Damage Management
+- Receive Returns
+- Damage Tracking
 - Reports
 
-### Management
+## Management
+
 - Dashboard
-- Analytics
 - Reports
+- Analytics
+- Inventory Statistics
 
-### Administrator
+## Administrator
+
 - User Management
 - Role Management
 - System Configuration
+- Audit Logs
 
 ---
 
-## 🛠 Technology Stack
+# 🛠 Technology Stack
 
-### Backend
-- Python
+## Backend
 
-### Framework
-- Django
+- Python 3.12+
+- FastAPI
 
-### Database
+## Database
+
 - PostgreSQL
 
-### Frontend
-- HTML
-- CSS
-- Bootstrap
-- JavaScript
+## ORM
+
+- SQLAlchemy
+
+## Validation
+
+- Pydantic
+
+## Authentication
+
+- JWT Authentication
+
+## Security
+
+- Password Hashing
+- Role-Based Access Control (RBAC)
+
+## API Documentation
+
+- Swagger UI
+- OpenAPI
+
+## Testing
+
+- Pytest
+
+## Deployment
+
+- Docker
+- Docker Compose
+
+## Version Control
+
+- Git
+- GitHub
 
 ---
 
-## 📂 Project Modules
+# 🏗 Architecture
+
+```text
+                Client (Browser / Postman)
+                          │
+                          ▼
+                   FastAPI Router Layer
+                          │
+                          ▼
+                  Business Service Layer
+                          │
+                          ▼
+                  Repository / Data Layer
+                          │
+                          ▼
+                 PostgreSQL Database
+```
+
+---
+
+# 📂 Modules
 
 - Authentication
+- User Management
 - Student Management
 - Component Management
+- Category Management
 - Inventory Management
-- Request Management
+- Borrow Request Management
 - Issue Management
 - Return Management
-- Damage & Loss Tracking
+- Damage Management
+- Dashboard
 - Reports
 - Notifications
 - Audit Logs
-- Dashboard
 
 ---
 
-## 📊 Database Tables
+# 🗄 Database Tables
 
 - Users
+- Roles
 - Students
 - Components
 - Categories
 - Inventory
-- Requests
-- Issues
+- BorrowRequests
+- IssuedComponents
 - Returns
 - DamageRecords
 - Notifications
@@ -150,48 +218,83 @@ Develop a Python-based application that allows:
 
 ---
 
-## 🎯 Objectives
+# 🔒 Security Features
 
-- Digitize D2P laboratory operations
+- JWT Authentication
+- Password Hashing
+- Role-Based Authorization
+- Input Validation
+- SQL Injection Protection
+- Secure REST APIs
+- Audit Logging
+
+---
+
+# 🎯 Objectives
+
+- Digitize laboratory operations
 - Improve inventory accuracy
 - Reduce manual paperwork
-- Provide real-time stock availability
+- Provide real-time stock visibility
+- Maintain audit history
 - Improve accountability
-- Generate useful reports
+- Generate reports
 - Enhance laboratory efficiency
 
 ---
 
-## 🔮 Future Enhancements
+# 📈 Development Roadmap
+
+- ✅ Core Business Logic
+- ✅ REST API Development
+- ✅ Layered Architecture
+- ✅ SQLAlchemy ORM
+- ✅ PostgreSQL Integration
+- ✅ JWT Authentication
+- ✅ RBAC Authorization
+- ✅ Testing with Pytest
+- ✅ Swagger Documentation
+- ✅ Docker Deployment
+
+---
+
+# 🔮 Future Enhancements
 
 - QR Code Integration
-- Barcode Support
-- Mobile Application
+- RFID Support
+- Barcode Scanner
 - AI Component Recommendation
-- Stock Prediction
-- Multi-Lab Support
+- AI Stock Prediction
+- Mobile Application
 - Email Notifications
+- Multi-Lab Support
 
 ---
 
-## 📌 Project Status
+# 📊 Project Status
 
-🚧 Under Development
+🚧 **Currently Under Development**
 
 ---
 
-## 👨‍💻 Developed By
+# 👨‍💻 Developer
 
-Ayyappan P
+**Ayyappan P**
 
-Department of Computer Science and Engineering
+Bachelor of Engineering (Computer Science and Engineering)
 
 J.J. College of Engineering and Technology
 
-Academic Year: 2024–2028
+Batch: **2024 – 2028**
 
 ---
 
-## 📄 License
+# ⭐ Support
 
-This project is developed as an academic capstone project for the D2P Laboratory at J.J. College of Engineering and Technology.
+If you find this project useful, consider giving it a ⭐ on GitHub.
+
+---
+
+# 📄 License
+
+This project is developed for **academic and educational purposes** as part of the Capstone Project at **J.J. College of Engineering and Technology (JJCET)**.
