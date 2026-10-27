@@ -70,6 +70,9 @@ export default function LoginPage() {
             <div className="mt-4 text-center text-sm text-muted-foreground">
               <a href="/forgot-password" className="text-primary hover:underline">Forgot password?</a>
             </div>
+            <div className="mt-2 text-center text-sm text-muted-foreground">
+              No account? <a href="/signup" className="text-primary hover:underline">Sign up</a>
+            </div>
           </CardContent>
         </Card>
       </div>

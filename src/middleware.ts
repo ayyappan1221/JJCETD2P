@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth/edge";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/api/auth", "/api/v1/health", "/api/v1/seed"];
+const PUBLIC_PATHS = ["/login", "/signup", "/api/auth", "/api/v1/health", "/api/v1/seed", "/api/v1/signup"];
 
 const ROLE_ROUTES: Record<string, string[]> = {
   "/admin": ["ADMIN"],
