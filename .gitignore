@@ -42,3 +42,10 @@ next-env.d.ts
 
 # local pglite db data
 /data/
+
+# dev artifacts
+.omo/
+.codegraph/
+*.docx
+components_data.json
+parse_docx.py
