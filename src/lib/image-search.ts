@@ -49,7 +49,6 @@ const ALIASES: Record<string, string[]> = {
   "rf wireless transmitter and receiver": ["RF module", "radio frequency module"],
   "ky-040 rotary encoder": ["rotary encoder"],
   "4x4 matrix keypad": ["keypad module", "matrix keypad"],
-  "4×4 matrix keypad": ["keypad module", "matrix keypad"],
   "ttp223 touch sensor": ["touch sensor", "capacitive touch sensor"],
   "hw139 touch sensor": ["touch sensor"],
   "dpdt switch (6-pin)": ["toggle switch"],
