@@ -2,6 +2,8 @@ import NextAuth from "next-auth";
 
 // Edge-compatible auth config (no DB imports)
 export const { auth } = NextAuth({
+  secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET || "jjcetd2p-dev-secret-change-me",
+  trustHost: true,
   session: { strategy: "jwt" },
   providers: [],
   callbacks: {

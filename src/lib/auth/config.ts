@@ -1,13 +1,13 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/lib/db";
 import { profiles, userRoles } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db),
+  secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET || "jjcetd2p-dev-secret-change-me",
+  trustHost: true,
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
