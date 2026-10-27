@@ -1,324 +1,88 @@
-# 🚀 JJCETD2P
+# JJCETD2P — D2P Lab Component Management System
 
-> **D2P Lab Operations and Component Management System**
->
-> A modern FastAPI-based Inventory and Laboratory Operations Management System developed for the Design to Product (D2P) Laboratory at **J.J. College of Engineering and Technology (JJCET)**.
+> **Status:** In Development — Full-stack application built with Next.js + Neon Postgres
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?logo=fastapi)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)
-![License](https://img.shields.io/badge/License-Academic-green)
+## Overview
 
----
+JJCETD2P is a laboratory component management system for **J.J. College of Engineering and Technology (JJCET)**, Ammapettai, Tiruchirappalli. It digitizes laboratory inventory, student borrowing, approval workflows, component issuing and returns, stock management, overdue tracking, reports, notifications, and administrative operations.
 
-# 📖 About
+## Quick Start
 
-The **D2P Lab Operations and Component Management System (JJCETD2P)** is a centralized web application designed to digitize and automate the inventory and daily operations of the **Design to Product (D2P) Laboratory**.
+The application lives in the `jjcetd2p/` directory.
 
-The current laboratory workflow relies on manual registers for maintaining component inventory, issuing materials, tracking returns, and managing stock.
-
-This project replaces the manual process with a secure, scalable, and modern digital platform.
-
-This application is being developed as a **Capstone Project** for the Department of Computer Science and Engineering.
-
----
-
-# 🏫 Institution
-
-**J.J. College of Engineering and Technology (JJCET)**
-
-📍 Ammapettai, Tiruchirappalli, Tamil Nadu, India
-
-🌐 https://jjcet.ac.in/
-
----
-
-# 🎯 Problem Statement
-
-Current D2P laboratory management faces several challenges:
-
-- Manual register maintenance
-- Difficult inventory tracking
-- No centralized database
-- Delayed issue & return process
-- Missing stock records
-- Limited reporting
-- No audit trail
-- Poor inventory visibility
-
----
-
-# 💡 Proposed Solution
-
-Develop a secure web-based inventory management platform that provides:
-
-- Digital Inventory Management
-- Student Authentication
-- Component Issue & Return
-- Borrow Request Workflow
-- Real-time Stock Monitoring
-- Damage & Loss Tracking
-- Reports & Analytics
-- Role-Based Access Control
-- Audit Logging
-- Administrative Dashboard
-
----
-
-# 👥 User Roles
-
-- 👨‍🎓 Student
-- 👨‍🏫 D2P In-Charge
-- 👨‍💼 Management
-- 👨‍💻 Administrator
-
----
-
-# 🚀 Features
-
-## Student
-
-- Register & Login
-- Search Components
-- View Availability
-- Request Components
-- Borrow History
-
-## D2P In-Charge
-
-- Manage Components
-- Manage Categories
-- Manage Inventory
-- Approve Requests
-- Issue Components
-- Receive Returns
-- Damage Tracking
-- Reports
-
-## Management
-
-- Dashboard
-- Reports
-- Analytics
-- Inventory Statistics
-
-## Administrator
-
-- User Management
-- Role Management
-- System Configuration
-- Audit Logs
-
----
-
-# 🛠 Technology Stack
-
-## Backend
-
-- Python 3.12+
-- FastAPI
-
-## Database
-
-- PostgreSQL
-
-## ORM
-
-- SQLAlchemy
-
-## Validation
-
-- Pydantic
-
-## Authentication
-
-- JWT Authentication
-
-## Security
-
-- Password Hashing
-- Role-Based Access Control (RBAC)
-
-## API Documentation
-
-- Swagger UI
-- OpenAPI
-
-## Testing
-
-- Pytest
-
-## Deployment
-
-- Docker
-- Docker Compose
-
-## Version Control
-
-- Git
-- GitHub
-
----
-
-# 🏗 Architecture
-
-```text
-                Client (Browser / Postman)
-                          │
-                          ▼
-                   FastAPI Router Layer
-                          │
-                          ▼
-                  Business Service Layer
-                          │
-                          ▼
-                  Repository / Data Layer
-                          │
-                          ▼
-                 PostgreSQL Database
+```bash
+cd jjcetd2p
+npm install
+npm run db:setup        # Create local database (pglite)
+npm run dev             # Start dev server at http://localhost:3000
 ```
 
----
+Then seed demo data:
+```bash
+curl -X POST http://localhost:3000/api/v1/seed -H "Content-Type: application/json" -d '{"secret":"dev-seed-secret"}'
+```
 
-# 📂 Modules
+## Demo Credentials
 
-- Authentication
-- User Management
-- Student Management
-- Component Management
-- Category Management
-- Inventory Management
-- Borrow Request Management
-- Issue Management
-- Return Management
-- Damage Management
-- Dashboard
-- Reports
-- Notifications
-- Audit Logs
+| Role | Email | Password |
+|---|---|---|
+| Administrator | admin@jjcet.ac.in | Admin@123 |
+| D2P In-Charge | incharge@jjcet.ac.in | Incharge@123 |
+| Lab Staff | staff@jjcet.ac.in | Staff@123 |
+| Student | student@jjcet.ac.in | Student@123 |
 
----
+## Tech Stack
 
-# 🔷 Flow Diagrams
+- **Frontend:** Next.js 15 (App Router) + TypeScript + Tailwind CSS v4 + shadcn/ui
+- **Backend:** Next.js Route Handlers (serverless) — no separate backend
+- **Database:** Neon Postgres (via Vercel Marketplace) / pglite (local dev)
+- **ORM:** Drizzle ORM
+- **Auth:** Auth.js v5 (Credentials + JWT)
+- **Deployment:** Vercel (single deployable)
 
-## System Architecture
+## Architecture
 
-![System Architecture Workflow](FlowDiagrams/System%20Architecture%20Workflow.png)
+```
+Browser → Vercel (Next.js) → Neon Postgres
+```
 
-## Project Development Workflow
+Modular monolith — frontend, API, and database access in one Next.js application. No separate backend server, no Docker, no Python.
 
-![Project Development Workflow](FlowDiagrams/Project%20Development%20Workflow.png)
+## User Roles
 
-## Overall System Workflow
+| Role | Access |
+|---|---|
+| Administrator | Users, roles, inventory, categories, reports, audit logs, settings |
+| D2P In-Charge | Approvals, inventory overview, overdue, reports, audit history |
+| Lab Staff | Inventory ops, issue/return, stock receipts/adjustments, overdue |
+| Student | Browse, request, track, history, notifications |
 
-![Overall System Workflow](FlowDiagrams/Overall%20System%20Workflow.png)
+## Application Pages
 
-## Inventory Workflow
+- **Public:** Login, Password Recovery, Access Denied
+- **Student:** Dashboard, Components, Requests, Issues, Notifications
+- **Staff:** + Approvals, Returns, Stock, Overdue, Reports
+- **Admin:** + Categories, Users, Audit Logs, Settings
 
-![Inventory Workflow](FlowDiagrams/Inventory%20Workflow.png)
+## Database Schema
 
-## Authentication Workflow
+11 tables: `profiles`, `user_roles`, `categories`, `components`, `borrowing_requests`, `issue_records`, `return_records`, `stock_movements`, `notifications`, `audit_logs`, `app_settings`
 
-![Authentication Workflow](FlowDiagrams/Authentication%20Workflow.png)
+## API Endpoints
 
----
+All under `/api/v1/`: auth, users, categories, components, borrowing-requests, approvals, issues, returns, stock-movements, overdue, notifications, reports, audit-logs, dashboard, health, seed
 
-# 🗄 Database Tables
+## Excluded Scope
 
-- Users
-- Roles
-- Students
-- Components
-- Categories
-- Inventory
-- BorrowRequests
-- IssuedComponents
-- Returns
-- DamageRecords
-- Notifications
-- AuditLogs
+Per project requirements, the following are **not** implemented:
+- Damage List / Damage Management
+- Damage Reports / Damage Analytics
+- Separate damaged-component tracking
 
----
+## Developer
 
-# 🔒 Security Features
+Ayyappan P — B.E. CSE, JJCET (2024–2028)
 
-- JWT Authentication
-- Password Hashing
-- Role-Based Authorization
-- Input Validation
-- SQL Injection Protection
-- Secure REST APIs
-- Audit Logging
+## License
 
----
-
-# 🎯 Objectives
-
-- Digitize laboratory operations
-- Improve inventory accuracy
-- Reduce manual paperwork
-- Provide real-time stock visibility
-- Maintain audit history
-- Improve accountability
-- Generate reports
-- Enhance laboratory efficiency
-
----
-
-# 📈 Development Roadmap
-
-- ✅ Core Business Logic
-- ✅ REST API Development
-- ✅ Layered Architecture
-- ✅ SQLAlchemy ORM
-- ✅ PostgreSQL Integration
-- ✅ JWT Authentication
-- ✅ RBAC Authorization
-- ✅ Testing with Pytest
-- ✅ Swagger Documentation
-- ✅ Docker Deployment
-
----
-
-# 🔮 Future Enhancements
-
-- QR Code Integration
-- RFID Support
-- Barcode Scanner
-- AI Component Recommendation
-- AI Stock Prediction
-- Mobile Application
-- Email Notifications
-- Multi-Lab Support
-
----
-
-# 📊 Project Status
-
-🚧 **Currently Under Development**
-
----
-
-# 👨‍💻 Developer
-
-**Ayyappan P**
-
-Bachelor of Engineering (Computer Science and Engineering)
-
-J.J. College of Engineering and Technology
-
-Batch: **2024 – 2028**
-
----
-
-# ⭐ Support
-
-If you find this project useful, consider giving it a ⭐ on GitHub.
-
----
-
-# 📄 License
-
-This project is developed for **academic and educational purposes** as part of the Capstone Project at **J.J. College of Engineering and Technology (JJCET)**.
+Academic/Institutional use.
