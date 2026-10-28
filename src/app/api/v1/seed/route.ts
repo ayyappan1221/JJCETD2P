@@ -61,10 +61,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       message: "Seeded successfully (users + categories only). Run /api/v1/seed/import to import all 80 components.",
       credentials: {
-        admin: "admin@jjcet.ac.in / Admin@123",
-        incharge: "incharge@jjcet.ac.in / Incharge@123",
-        staff: "staff@jjcet.ac.in / Staff@123",
-        student: "student@jjcet.ac.in / Student@123",
+        admin: "plicentring9876@gmail.com / Ayyu@123",
+        incharge: "aashikahamed029@gmail.com / Ayyu@123",
       },
     });
   } catch (err: any) {

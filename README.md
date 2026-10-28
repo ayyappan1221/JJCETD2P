@@ -77,9 +77,8 @@ npm run dev
 
 | Role | Email | Password |
 |---|---|---|
-| Administrator | admin@jjcet.ac.in | Admin@123 |
-| D2P In-Charge | incharge@jjcet.ac.in | Incharge@123 |
-| Student | student@jjcet.ac.in | Student@123 |
+| Administrator | plicentring9876@gmail.com | Ayyu@123 |
+| D2P In-Charge | aashikahamed029@gmail.com | Ayyu@123 |
 
 ### Environment Variables
 
