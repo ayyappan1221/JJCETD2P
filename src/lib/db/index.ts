@@ -9,16 +9,21 @@ import path from "path";
 const dbUrl = process.env.DATABASE_URL || "./data/jjcetd2p.db";
 
 function createDb() {
-  if (dbUrl.startsWith("postgres")) {
-    const sql = neon(dbUrl);
-    return drizzleNeon(sql, { schema });
+  try {
+    if (dbUrl.startsWith("postgres")) {
+      const sql = neon(dbUrl);
+      return drizzleNeon(sql, { schema });
+    }
+    const dataDir = path.dirname(dbUrl);
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    const client = new PGlite(dbUrl);
+    return drizzlePglite(client, { schema });
+  } catch (err) {
+    console.error("DB init failed:", err);
+    return null;
   }
-  const dataDir = path.dirname(dbUrl);
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-  const client = new PGlite(dbUrl);
-  return drizzlePglite(client, { schema });
 }
 
 export const db: any = createDb();
