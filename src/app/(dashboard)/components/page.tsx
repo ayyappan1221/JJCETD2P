@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Search, Edit, LayoutGrid, List, Package } from "lucide-react";
+import { Plus, Search, Edit, LayoutGrid, List, Package, ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
 
 async function fetchComponents(params: Record<string, string>) {
@@ -196,6 +196,12 @@ export default function ComponentsPage() {
                   </Button>
                   )}
                 </div>
+                <div className="flex items-center gap-1 text-yellow-500 text-xs">
+                  {"★★★★☆"} <span className="text-muted-foreground ml-1">(4.0)</span>
+                </div>
+                <Button size="sm" className="w-full bg-[#FF9900] hover:bg-[#F08804] text-black font-medium mt-2" disabled={comp.availableQuantity <= 0}>
+                  <ShoppingCart className="h-4 w-4 mr-2" /> Request
+                </Button>
                 {comp.availableQuantity <= comp.minStockThreshold && comp.minStockThreshold > 0 && comp.totalQuantity > 0 && (
                   <Badge variant="destructive" className="text-xs w-full justify-center">Low Stock</Badge>
                 )}
