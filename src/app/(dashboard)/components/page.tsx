@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,9 @@ async function fetchCategories() {
 
 export default function ComponentsPage() {
   const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const roles = (session?.user as any)?.roles || [];
+  const canManage = roles.some((r: string) => ["ADMIN", "D2P_INCHARGE"].includes(r));
   const [search, setSearch] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [page, setPage] = useState(1);
@@ -101,6 +105,7 @@ export default function ComponentsPage() {
           <Button variant={viewMode === "table" ? "default" : "outline"} size="sm" onClick={() => setViewMode("table")}>
             <List className="h-4 w-4" />
           </Button>
+          {canManage && (
           <Dialog open={dialogOpen} onOpenChange={(open) => { setDialogOpen(open); if (!open) resetForm(); }}>
             <DialogTrigger>
               <Button><Plus className="h-4 w-4 mr-2" /> Add Component</Button>
@@ -133,6 +138,7 @@ export default function ComponentsPage() {
               </div>
             </DialogContent>
           </Dialog>
+          )}
         </div>
       </div>
 
@@ -184,9 +190,11 @@ export default function ComponentsPage() {
                     </span>
                     <span className="text-muted-foreground"> / {comp.totalQuantity}</span>
                   </div>
+                  {canManage && (
                   <Button variant="ghost" size="sm" onClick={() => openEdit(comp)}>
                     <Edit className="h-4 w-4" />
                   </Button>
+                  )}
                 </div>
                 {comp.availableQuantity <= comp.minStockThreshold && comp.minStockThreshold > 0 && comp.totalQuantity > 0 && (
                   <Badge variant="destructive" className="text-xs w-full justify-center">Low Stock</Badge>
@@ -222,7 +230,7 @@ export default function ComponentsPage() {
                     <TableCell className="text-sm">{comp.storageLocation || "-"}</TableCell>
                     <TableCell><Badge variant={comp.isActive ? "default" : "secondary"}>{comp.isActive ? "Active" : "Archived"}</Badge></TableCell>
                     <TableCell className="text-right">
-                      <Button variant="ghost" size="sm" onClick={() => openEdit(comp)}><Edit className="h-4 w-4" /></Button>
+                      {canManage && <Button variant="ghost" size="sm" onClick={() => openEdit(comp)}><Edit className="h-4 w-4" /></Button>}
                     </TableCell>
                   </TableRow>
                 ))}
