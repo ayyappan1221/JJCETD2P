@@ -48,3 +48,6 @@ next-env.d.ts
 .codegraph/
 *.docx
 parse_docx.py
+.vercel
+.env*
+!.env.example
