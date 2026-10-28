@@ -3,12 +3,11 @@ import { db } from "@/lib/db";
 import { issueRecords } from "@/lib/db/schema";
 import { eq, and, lt, or, sql, desc } from "drizzle-orm";
 import { auth } from "@/lib/auth/config";
+import { requireRole } from "@/lib/auth/rbac";
 
 export async function GET(req: NextRequest) {
-  const session = await auth();
-  if (!session?.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE");
+  if (error) return error;
 
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get("page") || "1");

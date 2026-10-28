@@ -10,6 +10,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const roles = (session.user as any).roles || [];
+  const isStudent = !roles.some((r: string) => ["ADMIN", "D2P_INCHARGE"].includes(r));
+  const userId = (session.user as any).id;
+
   const now = new Date();
 
   const [
@@ -26,8 +30,8 @@ export async function GET(req: NextRequest) {
     db.select({ count: sql<number>`count(*)` }).from(components).where(eq(components.isActive, true)),
     db.select({ total: sql<number>`coalesce(sum(${components.availableQuantity}), 0)` }).from(components),
     db.select({ total: sql<number>`coalesce(sum(${components.issuedQuantity}), 0)` }).from(components),
-    db.select({ count: sql<number>`count(*)` }).from(borrowingRequests).where(eq(borrowingRequests.status, "PENDING")),
-    db.select({ count: sql<number>`count(*)` }).from(borrowingRequests).where(eq(borrowingRequests.status, "APPROVED")),
+    db.select({ count: sql<number>`count(*)` }).from(borrowingRequests).where(isStudent ? and(eq(borrowingRequests.status, "PENDING"), eq(borrowingRequests.studentId, userId)) : eq(borrowingRequests.status, "PENDING")),
+    db.select({ count: sql<number>`count(*)` }).from(borrowingRequests).where(isStudent ? and(eq(borrowingRequests.status, "APPROVED"), eq(borrowingRequests.studentId, userId)) : eq(borrowingRequests.status, "APPROVED")),
     db.select({ count: sql<number>`count(*)` }).from(issueRecords).where(
       or(eq(issueRecords.status, "ACTIVE"), eq(issueRecords.status, "PARTIALLY_RETURNED"))
     ),
@@ -41,6 +45,7 @@ export async function GET(req: NextRequest) {
       and(eq(components.isActive, true), sql`${components.availableQuantity} <= ${components.minStockThreshold}`, sql`${components.totalQuantity} > 0`, sql`${components.minStockThreshold} > 0`)
     ),
     db.query.borrowingRequests.findMany({
+      where: isStudent ? eq(borrowingRequests.studentId, userId) : undefined,
       with: { student: true, component: true },
       limit: 5,
       orderBy: [desc(borrowingRequests.createdAt)],

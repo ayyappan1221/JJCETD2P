@@ -314,6 +314,8 @@ async function main() {
       cache[item.name] = image
         ? { ...image, fetchedAt: new Date().toISOString() }
         : { imageUrl: null, fetchedAt: new Date().toISOString() };
+      // Persist cache incrementally so progress survives interruption
+      try { fs.writeFileSync(cachePath, `${JSON.stringify(cache, null, 2)}\n`, "utf-8"); } catch {}
       if (image) {
         item.imageUrl = image.imageUrl;
         found++;

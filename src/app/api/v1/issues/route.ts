@@ -86,7 +86,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE", "D2P_INCHARGE");
+  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE");
   if (error) return error;
 
   try {

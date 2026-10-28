@@ -19,10 +19,16 @@ const updateUserSchema = z.object({
 });
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const { error } = await requireRole("ADMIN");
-  if (error) return error;
-
+  const session = await auth();
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const { id } = await params;
+  const roles = (session.user as any).roles || [];
+  const isAdmin = roles.includes("ADMIN");
+  if (!isAdmin && (session.user as any).id !== id) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
   const user = await db.query.profiles.findFirst({
     where: eq(profiles.id, id),
     with: { roles: true },
@@ -40,13 +46,28 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const { session, error } = await requireRole("ADMIN");
-  if (error) return error;
-
+  const session = await auth();
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const { id } = await params;
+  const roles = (session.user as any).roles || [];
+  const isAdmin = roles.includes("ADMIN");
+  const isSelf = (session.user as any).id === id;
+  if (!isAdmin && !isSelf) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  // Non-admins can only edit personal fields, not roles/isActive
+  const body = await req.json();
+  if (!isAdmin) {
+    delete body.roles;
+    delete body.isActive;
+    delete body.department;
+    delete body.rollNumber;
+  }
 
   try {
-    const body = await req.json();
     const parsed = updateUserSchema.parse(body);
 
     const existing = await db.query.profiles.findFirst({
