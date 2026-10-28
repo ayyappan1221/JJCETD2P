@@ -19,9 +19,8 @@ export async function POST(req: NextRequest) {
     }
 
     const users = [
-      { email: "admin@jjcet.ac.in", password: "Admin@123", name: "System Administrator", roles: ["ADMIN"] },
-      { email: "incharge@jjcet.ac.in", password: "Incharge@123", name: "D2P In-Charge", roles: ["D2P_INCHARGE"] },
-      { email: "student@jjcet.ac.in", password: "Student@123", name: "Test Student", roles: ["STUDENT"], rollNumber: "CSE2024001", department: "CSE" },
+      { email: "plicentring9876@gmail.com", password: "Ayyu@123", name: "Ayyappan P", roles: ["ADMIN"] },
+      { email: "aashikahamed029@gmail.com", password: "Ayyu@123", name: "Aashik Ahamed A", roles: ["D2P_INCHARGE"] },
     ];
 
     for (const u of users) {
@@ -53,7 +52,10 @@ export async function POST(req: NextRequest) {
     ];
 
     for (const name of categoryNames) {
-      await db.insert(categories).values({ name, description: `${name} components` });
+      const existing = await db.query.categories.findFirst({ where: eq(categories.name, name) });
+      if (!existing) {
+        await db.insert(categories).values({ name, description: `${name} components` });
+      }
     }
 
     return NextResponse.json({
