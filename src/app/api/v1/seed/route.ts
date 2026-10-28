@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     const existingAdmin = await db.query.profiles.findFirst({
-      where: eq(profiles.email, "admin@jjcet.ac.in"),
+      where: eq(profiles.email, "plicentring9876@gmail.com"),
     });
     if (existingAdmin) {
       return NextResponse.json({ message: "Already seeded" });
