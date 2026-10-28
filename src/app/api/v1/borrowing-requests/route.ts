@@ -6,6 +6,7 @@ import { requireRole, requireAuth } from "@/lib/auth/rbac";
 import { auth } from "@/lib/auth/config";
 import { createAuditLog } from "@/services/audit";
 import { createNotification } from "@/services/notifications";
+import { sendEmail, isEmailConfigured } from "@/lib/email";
 import { z } from "zod";
 import { generateReference } from "@/lib/utils";
 
@@ -148,6 +149,19 @@ export async function POST(req: NextRequest) {
         relatedEntityId: request.id,
         dedupeKey: `request_submitted_${request.id}_${staff.id}`,
       });
+
+      // Email notification to staff/incharge (if configured)
+      if (isEmailConfigured() && staff.email) {
+        await sendEmail(
+          staff.email,
+          "New Component Request — JJCETD2P",
+          `<p>Dear ${staff.fullName},</p>
+           <p><strong>${session.user.name}</strong> has requested <strong>${parsed.quantity}x ${component.name}</strong>.</p>
+           <p>Purpose: ${parsed.purpose || "N/A"}</p>
+           <p>Expected return: ${new Date(parsed.requestedReturnDate).toLocaleDateString()}</p>
+           <p>Please review and approve/reject in the D2P Lab system.</p>`
+        );
+      }
     }
 
     await createAuditLog({
