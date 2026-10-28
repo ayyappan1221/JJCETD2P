@@ -14,12 +14,18 @@ export async function GET(req: NextRequest) {
 
   // Load issue records with related data
   const issues = await db.query.issueRecords.findMany({
-    with: { student: true, component: true, returns: true },
+    with: { student: true, component: true },
     orderBy: [desc(issueRecords.issuedAt)],
   });
 
+  const allReturns = await db.query.returnRecords.findMany();
+  const returnsByIssue = new Map<string, number>();
+  for (const r of allReturns as any[]) {
+    returnsByIssue.set(r.issueId, (returnsByIssue.get(r.issueId) || 0) + (r.quantity || 0));
+  }
+
   const rows = issues.map((ir: any) => {
-    const totalReturned = (ir.returns || []).reduce((s: number, r: any) => s + (r.quantity || 0), 0);
+    const totalReturned = returnsByIssue.get(ir.id) || 0;
     const outstanding = (ir.quantityIssued || 0) - totalReturned;
     return {
       reference: ir.reference,
