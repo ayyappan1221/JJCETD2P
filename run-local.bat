@@ -77,7 +77,7 @@ echo.
 
 echo ============================================
 echo  App running at: http://localhost:3000
-echo  Demo login: admin@jjcet.ac.in / Admin@123
+echo  Demo login: plicentring9876@gmail.com / Ayyu@123
 echo  Press any key to stop the server...
 echo ============================================
 pause
