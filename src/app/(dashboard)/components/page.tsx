@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Search, Edit, LayoutGrid, List, Package, ShoppingCart } from "lucide-react";
+import { Plus, Search, Edit, LayoutGrid, List, Package, ShoppingCart, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 async function fetchComponents(params: Record<string, string>) {
@@ -37,6 +37,10 @@ export default function ComponentsPage() {
   const [categoryId, setCategoryId] = useState("");
   const [page, setPage] = useState(1);
   const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
+  const [cart, setCart] = useState<any[]>([]);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [returnDate, setReturnDate] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingComponent, setEditingComponent] = useState<any>(null);
 
@@ -75,6 +79,54 @@ export default function ComponentsPage() {
   const resetForm = () => {
     setForm({ code: "", name: "", categoryId: "", description: "", unit: "pcs", totalQuantity: 0, storageLocation: "", minStockThreshold: 0, imageUrl: "" });
     setEditingComponent(null);
+  };
+
+  const addToCart = (comp: any) => {
+    setCart((prev) => {
+      const existing = prev.find((c) => c.id === comp.id);
+      if (existing) {
+        return prev.map((c) => c.id === comp.id ? { ...c, qty: Math.min(c.qty + 1, comp.availableQuantity) } : c);
+      }
+      return [...prev, { ...comp, qty: 1 }];
+    });
+    toast.success(`${comp.name} added to cart`);
+  };
+
+  const removeFromCart = (id: string) => {
+    setCart((prev) => prev.filter((c) => c.id !== id));
+  };
+
+  const updateCartQty = (id: string, qty: number) => {
+    setCart((prev) => prev.map((c) => c.id === id ? { ...c, qty: Math.max(1, Math.min(qty, c.availableQuantity)) } : c));
+  };
+
+  const submitCart = async () => {
+    if (cart.length === 0) { toast.error("Cart is empty"); return; }
+    if (!returnDate) { toast.error("Select a return date"); return; }
+    setSubmitting(true);
+    try {
+      for (const item of cart) {
+        const res = await fetch("/api/v1/borrowing-requests", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            componentId: item.id,
+            quantity: item.qty,
+            purpose: "Component request from inventory",
+            requestedReturnDate: new Date(returnDate).toISOString(),
+          }),
+        });
+        if (!res.ok) { const e = await res.json(); throw new Error(e.error || "Failed"); }
+      }
+      toast.success("Requests submitted for approval");
+      setCart([]);
+      setCartOpen(false);
+      setReturnDate("");
+    } catch (e: any) {
+      toast.error(e.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const openEdit = (comp: any) => {
@@ -196,11 +248,8 @@ export default function ComponentsPage() {
                   </Button>
                   )}
                 </div>
-                <div className="flex items-center gap-1 text-yellow-500 text-xs">
-                  {"★★★★☆"} <span className="text-muted-foreground ml-1">(4.0)</span>
-                </div>
-                <Button size="sm" className="w-full bg-[#FF9900] hover:bg-[#F08804] text-black font-medium mt-2" disabled={comp.availableQuantity <= 0}>
-                  <ShoppingCart className="h-4 w-4 mr-2" /> Request
+                <Button size="sm" className="w-full bg-[#FF9900] hover:bg-[#F08804] text-black font-medium mt-2" disabled={comp.availableQuantity <= 0} onClick={() => addToCart(comp)}>
+                  <ShoppingCart className="h-4 w-4 mr-2" /> Add to Cart
                 </Button>
                 {comp.availableQuantity <= comp.minStockThreshold && comp.minStockThreshold > 0 && comp.totalQuantity > 0 && (
                   <Badge variant="destructive" className="text-xs w-full justify-center">Low Stock</Badge>
@@ -256,6 +305,47 @@ export default function ComponentsPage() {
           </div>
         </div>
       )}
+
+      {/* Floating Cart Button */}
+      {cart.length > 0 && (
+        <button
+          onClick={() => setCartOpen(true)}
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#FF9900] hover:bg-[#F08804] text-black font-bold px-5 py-3 rounded-full shadow-lg"
+        >
+          <ShoppingCart className="h-5 w-5" /> Cart ({cart.reduce((s, c) => s + c.qty, 0)})
+        </button>
+      )}
+
+      {/* Cart Dialog */}
+      <Dialog open={cartOpen} onOpenChange={setCartOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader><DialogTitle>Your Request Cart</DialogTitle></DialogHeader>
+          <div className="space-y-3 max-h-80 overflow-auto">
+            {cart.map((c) => (
+              <div key={c.id} className="flex items-center gap-3 p-2 rounded bg-slate-50 dark:bg-slate-800/50">
+                <div className="flex-1">
+                  <p className="text-sm font-medium">{c.name}</p>
+                  <p className="text-xs text-muted-foreground">Avail: {c.availableQuantity}</p>
+                </div>
+                <Input type="number" min={1} max={c.availableQuantity} value={c.qty}
+                  onChange={(e) => updateCartQty(c.id, Number(e.target.value))} className="w-16 h-8" />
+                <Button size="sm" variant="ghost" onClick={() => removeFromCart(c.id)}>
+                  <Trash2 className="h-4 w-4 text-red-500" />
+                </Button>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-3 pt-3 border-t">
+            <div>
+              <Label className="text-sm">Requested Return Date</Label>
+              <Input type="date" value={returnDate} onChange={(e) => setReturnDate(e.target.value)} />
+            </div>
+            <Button onClick={submitCart} disabled={submitting} className="w-full bg-[#FF9900] hover:bg-[#F08804] text-black font-medium">
+              {submitting ? "Submitting..." : "Submit Request"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
