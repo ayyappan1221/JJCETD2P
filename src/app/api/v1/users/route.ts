@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { profiles, userRoles } from "@/lib/db/schema";
-import { eq, ilike, and, sql, desc } from "drizzle-orm";
+import { eq, ilike, and, or, sql, desc } from "drizzle-orm";
 import { requireRole } from "@/lib/auth/rbac";
 import { auth } from "@/lib/auth/config";
 import { createAuditLog } from "@/services/audit";
@@ -14,7 +14,7 @@ const createUserSchema = z.object({
   fullName: z.string().min(2),
   rollNumber: z.string().optional(),
   department: z.string().optional(),
-  roles: z.array(z.enum(["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"])).min(1),
+  roles: z.array(z.enum(["ADMIN", "D2P_INCHARGE", "STUDENT"])).min(1),
 });
 
 const updateUserSchema = z.object({
@@ -23,7 +23,7 @@ const updateUserSchema = z.object({
   department: z.string().optional(),
   phone: z.string().optional(),
   isActive: z.boolean().optional(),
-  roles: z.array(z.enum(["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"])).optional(),
+  roles: z.array(z.enum(["ADMIN", "D2P_INCHARGE", "D2P_INCHARGE", "STUDENT"])).optional(),
 });
 
 export async function GET(req: NextRequest) {
@@ -39,7 +39,14 @@ export async function GET(req: NextRequest) {
 
   const conditions: any[] = [];
   if (search) {
-    conditions.push(ilike(profiles.email, `%${search}%`));
+    conditions.push(
+      or(
+        ilike(profiles.email, `%${search}%`),
+        ilike(profiles.fullName, `%${search}%`),
+        ilike(profiles.registerNumber, `%${search}%`),
+        ilike(profiles.department, `%${search}%`)
+      )
+    );
   }
 
   const where = conditions.length > 0 ? and(...conditions) : undefined;
@@ -68,8 +75,15 @@ export async function GET(req: NextRequest) {
     id: u.id,
     email: u.email,
     fullName: u.fullName,
+    firstName: u.firstName,
+    lastName: u.lastName,
+    registerNumber: u.registerNumber,
+    sprNumber: u.sprNumber,
     rollNumber: u.rollNumber,
+    mobileNumber: u.mobileNumber,
+    academicYear: u.academicYear,
     department: u.department,
+    section: u.section,
     phone: u.phone,
     isActive: u.isActive,
     roles: u.roles?.map((r: any) => r.role) || [],

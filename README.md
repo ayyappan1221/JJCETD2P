@@ -24,8 +24,7 @@ JJCETD2P is a laboratory component management system for J.J. College of Enginee
 | Role | Permissions |
 |---|---|
 | Administrator | Full system access: users, roles, inventory, categories, reports, audit logs, settings |
-| D2P In-Charge | Oversight, approvals, inventory overview, overdue, reports, audit history |
-| Lab Staff | Inventory operations, issue/return components, stock receipts/adjustments, overdue |
+| D2P In-Charge | Oversight, approvals, inventory operations, issue/return, stock receipts/adjustments, overdue, reports, audit history |
 | Student | Browse inventory, submit requests, track status, view history/notifications |
 
 ## Features
@@ -80,7 +79,6 @@ npm run dev
 |---|---|---|
 | Administrator | admin@jjcet.ac.in | Admin@123 |
 | D2P In-Charge | incharge@jjcet.ac.in | Incharge@123 |
-| Lab Staff | staff@jjcet.ac.in | Staff@123 |
 | Student | student@jjcet.ac.in | Student@123 |
 
 ### Environment Variables

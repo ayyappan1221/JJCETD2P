@@ -15,6 +15,13 @@
       "when": 1792759898499,
       "tag": "0001_jittery_arclight",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793177277313,
+      "tag": "0002_cultured_mercury",
+      "breakpoints": true
     }
   ]
 }

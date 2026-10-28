@@ -8,27 +8,29 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Package, FolderTree, ShoppingCart, CheckCircle,
   ArrowRightLeft, RotateCcw, Truck, AlertTriangle, Bell, BarChart3,
-  ScrollText, Users, Settings, LogOut, Menu, X, Cpu, Wifi,
+  ScrollText, Users, Settings, LogOut, Menu, X, Cpu, Wifi, Info, FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import { Badge } from "@/components/ui/badge";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"] },
-  { href: "/components", label: "Components", icon: Package, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"] },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, roles: ["ADMIN", "D2P_INCHARGE", "STUDENT"] },
+  { href: "/components", label: "Components", icon: Package, roles: ["ADMIN", "D2P_INCHARGE", "STUDENT"] },
+  { href: "/project-idea", label: "Project Idea", icon: FileText, roles: ["STUDENT", "ADMIN", "D2P_INCHARGE"] },
   { href: "/categories", label: "Categories", icon: FolderTree, roles: ["ADMIN"] },
-  { href: "/requests", label: "Borrow Requests", icon: ShoppingCart, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"] },
-  { href: "/approvals", label: "Approvals", icon: CheckCircle, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"] },
-  { href: "/issues", label: "Issues", icon: ArrowRightLeft, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"] },
-  { href: "/returns", label: "Returns", icon: RotateCcw, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"] },
-  { href: "/stock", label: "Stock", icon: Truck, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"] },
-  { href: "/overdue", label: "Overdue", icon: AlertTriangle, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"] },
-  { href: "/notifications", label: "Notifications", icon: Bell, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"] },
-  { href: "/reports", label: "Reports", icon: BarChart3, roles: ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"] },
+  { href: "/requests", label: "Borrow Requests", icon: ShoppingCart, roles: ["ADMIN", "D2P_INCHARGE", "STUDENT"] },
+  { href: "/approvals", label: "Approvals", icon: CheckCircle, roles: ["ADMIN", "D2P_INCHARGE"] },
+  { href: "/issues", label: "Issues", icon: ArrowRightLeft, roles: ["ADMIN", "D2P_INCHARGE", "STUDENT"] },
+  { href: "/returns", label: "Returns", icon: RotateCcw, roles: ["ADMIN", "D2P_INCHARGE"] },
+  { href: "/stock", label: "Stock", icon: Truck, roles: ["ADMIN", "D2P_INCHARGE"] },
+  { href: "/overdue", label: "Overdue", icon: AlertTriangle, roles: ["ADMIN", "D2P_INCHARGE"] },
+  { href: "/notifications", label: "Notifications", icon: Bell, roles: ["ADMIN", "D2P_INCHARGE", "STUDENT"] },
+  { href: "/reports", label: "Reports", icon: BarChart3, roles: ["ADMIN", "D2P_INCHARGE"] },
   { href: "/audit-logs", label: "Audit Logs", icon: ScrollText, roles: ["ADMIN", "D2P_INCHARGE"] },
   { href: "/users", label: "Users", icon: Users, roles: ["ADMIN"] },
   { href: "/settings", label: "Settings", icon: Settings, roles: ["ADMIN"] },
+  { href: "/about", label: "About", icon: Info, roles: ["ADMIN", "D2P_INCHARGE", "STUDENT"] },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {

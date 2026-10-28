@@ -21,7 +21,6 @@ export async function POST(req: NextRequest) {
     const users = [
       { email: "admin@jjcet.ac.in", password: "Admin@123", name: "System Administrator", roles: ["ADMIN"] },
       { email: "incharge@jjcet.ac.in", password: "Incharge@123", name: "D2P In-Charge", roles: ["D2P_INCHARGE"] },
-      { email: "staff@jjcet.ac.in", password: "Staff@123", name: "Lab Staff", roles: ["LAB_STAFF"] },
       { email: "student@jjcet.ac.in", password: "Student@123", name: "Test Student", roles: ["STUDENT"], rollNumber: "CSE2024001", department: "CSE" },
     ];
 

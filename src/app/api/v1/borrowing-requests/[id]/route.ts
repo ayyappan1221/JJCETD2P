@@ -25,7 +25,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
   // Students can only view their own
   const roles = (session.user as any).roles || [];
   const isAdminOrStaff = roles.some((r: string) =>
-    ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"].includes(r)
+    ["ADMIN", "D2P_INCHARGE"].includes(r)
   );
   if (!isAdminOrStaff && (request as any).studentId !== (session.user as any).id) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -54,7 +54,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   if (body.action === "cancel") {
     const roles = (session.user as any).roles || [];
     const isAdminOrStaff = roles.some((r: string) =>
-      ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"].includes(r)
+      ["ADMIN", "D2P_INCHARGE"].includes(r)
     );
     const isOwner = (request as any).studentId === (session.user as any).id;
 

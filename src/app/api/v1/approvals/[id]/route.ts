@@ -14,7 +14,7 @@ const approvalSchema = z.object({
 });
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE", "LAB_STAFF");
+  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE", "D2P_INCHARGE");
   if (error) return error;
 
   const { id } = await params;

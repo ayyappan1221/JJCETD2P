@@ -17,7 +17,6 @@ import { relations } from "drizzle-orm";
 export const roleEnum = pgEnum("role", [
   "ADMIN",
   "D2P_INCHARGE",
-  "LAB_STAFF",
   "STUDENT",
 ]);
 
@@ -60,8 +59,15 @@ export const profiles = pgTable(
     id: uuid("id").defaultRandom().primaryKey(),
     authUserId: uuid("auth_user_id").notNull().unique(),
     email: varchar("email", { length: 255 }).notNull().unique(),
+    firstName: varchar("first_name", { length: 100 }),
+    lastName: varchar("last_name", { length: 100 }),
     fullName: varchar("full_name", { length: 255 }).notNull(),
+    registerNumber: varchar("register_number", { length: 50 }),
+    sprNumber: varchar("spr_number", { length: 50 }),
     rollNumber: varchar("roll_number", { length: 50 }),
+    mobileNumber: varchar("mobile_number", { length: 20 }),
+    academicYear: varchar("academic_year", { length: 20 }),
+    section: varchar("section", { length: 5 }),
     department: varchar("department", { length: 100 }),
     phone: varchar("phone", { length: 20 }),
     passwordHash: varchar("password_hash", { length: 255 }),

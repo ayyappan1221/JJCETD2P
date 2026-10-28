@@ -49,11 +49,19 @@ export default function ReportsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-2">
         <h1 className="text-2xl font-bold">Reports</h1>
-        <Button variant="outline" onClick={exportCsv}>
-          <Download className="h-4 w-4 mr-2" /> Export CSV
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={exportCsv}>
+            <Download className="h-4 w-4 mr-2" /> Export CSV
+          </Button>
+          <Button variant="outline" onClick={() => window.open("/api/v1/reports/export?format=pdf", "_blank")}>
+            <Download className="h-4 w-4 mr-2" /> Export PDF
+          </Button>
+          <Button variant="outline" onClick={() => window.open("/api/v1/reports/export?format=docx", "_blank")}>
+            <Download className="h-4 w-4 mr-2" /> Export Word
+          </Button>
+        </div>
       </div>
 
       <Card>

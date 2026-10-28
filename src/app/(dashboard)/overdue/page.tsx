@@ -1,10 +1,12 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, Mail } from "lucide-react";
+import { toast } from "sonner";
 
 async function fetchOverdue() {
   const res = await fetch("/api/v1/overdue?pageSize=50");
@@ -13,13 +15,29 @@ async function fetchOverdue() {
 }
 
 export default function OverduePage() {
+  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({ queryKey: ["overdue"], queryFn: fetchOverdue });
+
+  const notifyMutation = useMutation({
+    mutationFn: async () => {
+      const res = await fetch("/api/v1/overdue/notify", { method: "POST" });
+      if (!res.ok) throw new Error("Failed");
+      return res.json();
+    },
+    onSuccess: (d) => toast.success(d.message),
+    onError: (e: any) => toast.error(e.message),
+  });
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold flex items-center gap-2">
-        <AlertTriangle className="h-6 w-6 text-red-600" /> Overdue Items
-      </h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold flex items-center gap-2">
+          <AlertTriangle className="h-6 w-6 text-red-600" /> Overdue Items
+        </h1>
+        <Button variant="outline" onClick={() => notifyMutation.mutate()} disabled={notifyMutation.isPending}>
+          <Mail className="h-4 w-4 mr-2" /> Send Overdue Emails
+        </Button>
+      </div>
       <Card>
         <CardContent className="p-0">
           <Table>

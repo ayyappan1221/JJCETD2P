@@ -14,7 +14,7 @@ import { requireRole } from "@/lib/auth/rbac";
 import { auth } from "@/lib/auth/config";
 
 export async function GET(req: NextRequest) {
-  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE", "LAB_STAFF");
+  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE", "D2P_INCHARGE");
   if (error) return error;
 
   const { searchParams } = new URL(req.url);

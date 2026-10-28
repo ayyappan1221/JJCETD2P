@@ -21,7 +21,7 @@ async function fetchUsers(params: Record<string, string> = {}) {
   return res.json();
 }
 
-const ROLES = ["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"];
+const ROLES = ["ADMIN", "D2P_INCHARGE", "STUDENT"];
 
 export default function UsersPage() {
   const queryClient = useQueryClient();

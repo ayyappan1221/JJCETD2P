@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth/config";
 import { NextResponse } from "next/server";
 
-export type Role = "ADMIN" | "D2P_INCHARGE" | "LAB_STAFF" | "STUDENT";
+export type Role = "ADMIN" | "D2P_INCHARGE" | "STUDENT";
 
 export async function requireAuth() {
   const session = await auth();
@@ -33,5 +33,5 @@ export function isAdmin(session: any): boolean {
 }
 
 export function isStaffOrAbove(session: any): boolean {
-  return hasRole(session, "ADMIN", "D2P_INCHARGE", "LAB_STAFF");
+  return hasRole(session, "ADMIN", "D2P_INCHARGE", "D2P_INCHARGE");
 }

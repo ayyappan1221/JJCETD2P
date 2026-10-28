@@ -1,4 +1,4 @@
-export type Role = "ADMIN" | "D2P_INCHARGE" | "LAB_STAFF" | "STUDENT";
+export type Role = "ADMIN" | "D2P_INCHARGE" | "STUDENT";
 
 export type RequestStatus = "PENDING" | "APPROVED" | "REJECTED" | "CANCELLED" | "ISSUED";
 export type IssueStatus = "ACTIVE" | "PARTIALLY_RETURNED" | "RETURNED";

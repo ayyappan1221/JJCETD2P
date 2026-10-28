@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
 
   const roles = (session.user as any).roles || [];
   const isAdminOrStaff = roles.some((r: string) =>
-    ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"].includes(r)
+    ["ADMIN", "D2P_INCHARGE"].includes(r)
   );
 
   const conditions: any[] = [];
@@ -86,7 +86,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE", "LAB_STAFF");
+  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE", "D2P_INCHARGE");
   if (error) return error;
 
   try {

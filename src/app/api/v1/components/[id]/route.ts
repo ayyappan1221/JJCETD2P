@@ -35,7 +35,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const { session, error } = await requireRole("ADMIN", "LAB_STAFF");
+  const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE");
   if (error) return error;
 
   const { id } = await params;

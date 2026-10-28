@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
 
   const roles = (session.user as any).roles || [];
   const isAdminOrStaff = roles.some((r: string) =>
-    ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"].includes(r)
+    ["ADMIN", "D2P_INCHARGE"].includes(r)
   );
 
   const conditions: any[] = [];
@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
       with: { roles: true },
     });
     const staffWithRoles = staffUsers.filter((u: any) =>
-      u.roles?.some((r: any) => ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"].includes(r.role))
+      u.roles?.some((r: any) => ["ADMIN", "D2P_INCHARGE"].includes(r.role))
     );
 
     for (const staff of staffWithRoles) {

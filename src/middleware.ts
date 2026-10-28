@@ -6,8 +6,7 @@ const PUBLIC_PATHS = ["/login", "/signup", "/api/auth", "/api/v1/health", "/api/
 
 const ROLE_ROUTES: Record<string, string[]> = {
   "/admin": ["ADMIN"],
-  "/staff": ["ADMIN", "D2P_INCHARGE", "LAB_STAFF"],
-  "/student": ["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"],
+  "/student": ["ADMIN", "D2P_INCHARGE", "STUDENT"],
   "/incharge": ["ADMIN", "D2P_INCHARGE"],
 };
 

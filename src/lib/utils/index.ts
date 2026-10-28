@@ -30,8 +30,7 @@ export function getRoleLabel(role: string): string {
   const labels: Record<string, string> = {
     ADMIN: "Administrator",
     D2P_INCHARGE: "D2P In-Charge",
-    LAB_STAFF: "Lab Staff",
-    STUDENT: "Student",
+        STUDENT: "Student",
   };
   return labels[role] || role;
 }

@@ -14,7 +14,7 @@ const updateUserSchema = z.object({
   department: z.string().optional(),
   phone: z.string().optional(),
   isActive: z.boolean().optional(),
-  roles: z.array(z.enum(["ADMIN", "D2P_INCHARGE", "LAB_STAFF", "STUDENT"])).optional(),
+  roles: z.array(z.enum(["ADMIN", "D2P_INCHARGE", "STUDENT"])).optional(),
   password: z.string().min(8).optional(),
 });
 
