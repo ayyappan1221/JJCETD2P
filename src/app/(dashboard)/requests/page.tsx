@@ -147,21 +147,35 @@ export default function RequestsPage() {
               ) : (data?.data || []).length === 0 ? (
                 <TableRow><TableCell colSpan={7} className="text-center py-8 text-muted-foreground">No requests</TableCell></TableRow>
               ) : (
-                (data?.data || []).map((r: any) => (
-                  <TableRow key={r.id}>
-                    <TableCell className="font-mono text-sm">{r.reference}</TableCell>
-                    <TableCell>{r.componentName}</TableCell>
-                    <TableCell>{r.quantity}</TableCell>
-                    <TableCell><Badge variant="outline">{r.status}</Badge></TableCell>
-                    <TableCell className="text-sm">{new Date(r.requestedReturnDate).toLocaleDateString()}</TableCell>
-                    <TableCell className="text-sm">{new Date(r.createdAt).toLocaleDateString()}</TableCell>
-                    <TableCell className="text-right">
-                      {["PENDING", "APPROVED"].includes(r.status) && (
-                        <Button variant="ghost" size="sm" className="text-red-600" onClick={() => cancelMutation.mutate(r.id)}>Cancel</Button>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))
+                (() => {
+                  const groups = new Map<string, any[]>();
+                  for (const r of (data?.data || [])) {
+                    const key = r.cartId || r.id;
+                    if (!groups.has(key)) groups.set(key, []);
+                    groups.get(key)!.push(r);
+                  }
+                  return [...groups.values()].map((grp) => {
+                    const first = grp[0];
+                    const isMulti = grp.length > 1;
+                    const compNames = grp.map((r: any) => `${r.componentName} (×${r.quantity})`).join(", ");
+                    const totalQty = grp.reduce((s: number, r: any) => s + r.quantity, 0);
+                    return (
+                      <TableRow key={first.id}>
+                        <TableCell className="font-mono text-sm">{first.reference}{isMulti ? ` +${grp.length - 1}` : ""}</TableCell>
+                        <TableCell className="text-sm">{compNames}</TableCell>
+                        <TableCell>{totalQty}</TableCell>
+                        <TableCell><Badge variant="outline">{first.status}</Badge></TableCell>
+                        <TableCell className="text-sm">{new Date(first.requestedReturnDate).toLocaleDateString()}</TableCell>
+                        <TableCell className="text-sm">{new Date(first.createdAt).toLocaleDateString()}</TableCell>
+                        <TableCell className="text-right">
+                          {["PENDING", "APPROVED"].includes(first.status) && (
+                            <Button variant="ghost" size="sm" className="text-red-600" onClick={() => grp.forEach((r: any) => cancelMutation.mutate(r.id))}>Cancel</Button>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  });
+                })()
               )}
             </TableBody>
           </Table>

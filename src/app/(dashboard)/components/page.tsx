@@ -104,6 +104,7 @@ export default function ComponentsPage() {
     if (cart.length === 0) { toast.error("Cart is empty"); return; }
     if (!returnDate) { toast.error("Select a return date"); return; }
     setSubmitting(true);
+    const cartId = crypto.randomUUID();
     try {
       for (const item of cart) {
         const res = await fetch("/api/v1/borrowing-requests", {
@@ -114,6 +115,7 @@ export default function ComponentsPage() {
             quantity: item.qty,
             purpose: "Component request from inventory",
             requestedReturnDate: new Date(returnDate).toISOString(),
+            cartId,
           }),
         });
         if (!res.ok) { const e = await res.json(); throw new Error(e.error || "Failed"); }

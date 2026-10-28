@@ -151,6 +151,7 @@ export const borrowingRequests = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     reference: varchar("reference", { length: 30 }).notNull().unique(),
+    cartId: uuid("cart_id"),
     studentId: uuid("student_id")
       .notNull()
       .references(() => profiles.id, { onDelete: "cascade" }),

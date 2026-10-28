@@ -15,6 +15,7 @@ const createSchema = z.object({
   quantity: z.number().int().positive(),
   purpose: z.string().optional(),
   requestedReturnDate: z.string().datetime(),
+  cartId: z.string().uuid().optional(),
 });
 
 export async function GET(req: NextRequest) {
@@ -66,6 +67,7 @@ export async function GET(req: NextRequest) {
   const mapped = data.map((r: any) => ({
     id: r.id,
     reference: r.reference,
+    cartId: r.cartId,
     studentId: r.studentId,
     studentName: r.student?.fullName,
     componentId: r.componentId,
@@ -122,6 +124,7 @@ export async function POST(req: NextRequest) {
       .insert(borrowingRequests)
       .values({
         reference,
+        cartId: parsed.cartId || null,
         studentId: (session.user as any).id,
         componentId: parsed.componentId,
         quantity: parsed.quantity,

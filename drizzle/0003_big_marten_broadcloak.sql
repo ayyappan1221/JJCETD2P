@@ -1,0 +1,1 @@
+ALTER TABLE "borrowing_requests" ADD COLUMN "cart_id" uuid;
