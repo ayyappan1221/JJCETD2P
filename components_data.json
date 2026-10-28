@@ -1,0 +1,3610 @@
+[
+  {
+    "category": "Microcontroller & Development Boards",
+    "items": [
+      {
+        "name": "ESP32 DevKit",
+        "quantity": 10
+      },
+      {
+        "name": "ESP32-S3 DevKit",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-S3 Mini",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-C3 DevKit",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-C3 Mini",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-C6 DevKit",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-H2 DevKit",
+        "quantity": 5
+      },
+      {
+        "name": "ESP8266 NodeMCU",
+        "quantity": 5
+      },
+      {
+        "name": "Arduino UNO",
+        "quantity": 0
+      },
+      {
+        "name": "Arduino Nano",
+        "quantity": 0
+      },
+      {
+        "name": "Arduino Mega 2560",
+        "quantity": 5
+      },
+      {
+        "name": "Arduino Leonardo",
+        "quantity": 3
+      },
+      {
+        "name": "Arduino Micro",
+        "quantity": 3
+      },
+      {
+        "name": "Arduino GIGA R1 WiFi",
+        "quantity": 2
+      },
+      {
+        "name": "Raspberry Pi Pico",
+        "quantity": 5
+      },
+      {
+        "name": "Raspberry Pi Pico W",
+        "quantity": 5
+      },
+      {
+        "name": "Raspberry Pi Pico 2 / RP2350",
+        "quantity": 5
+      },
+      {
+        "name": "Teensy 4.1",
+        "quantity": 3
+      },
+      {
+        "name": "STM32F103 development board",
+        "quantity": 5
+      },
+      {
+        "name": "STM32F411 development board",
+        "quantity": 5
+      },
+      {
+        "name": "STM32G4 development board",
+        "quantity": 3
+      },
+      {
+        "name": "STM32H7 development board",
+        "quantity": 3
+      },
+      {
+        "name": "STM32WB wireless development board",
+        "quantity": 3
+      },
+      {
+        "name": "STM32WL LoRa development board",
+        "quantity": 3
+      },
+      {
+        "name": "TI MSPM0 development board",
+        "quantity": 3
+      },
+      {
+        "name": "TI C2000 development board",
+        "quantity": 2
+      },
+      {
+        "name": "NXP i.MX RT development board",
+        "quantity": 2
+      },
+      {
+        "name": "Renesas RA development board",
+        "quantity": 2
+      },
+      {
+        "name": "Seeed XIAO ESP32-S3",
+        "quantity": 5
+      },
+      {
+        "name": "Seeed XIAO nRF52840",
+        "quantity": 3
+      },
+      {
+        "name": "Seeed XIAO RP2040",
+        "quantity": 3
+      },
+      {
+        "name": "OpenMV Cam",
+        "quantity": 3
+      },
+      {
+        "name": "Kendryte K210 AI board",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "category": "Programming, Debugging & Interface Tools",
+    "items": [
+      {
+        "name": "J-Link debugger",
+        "quantity": 3
+      },
+      {
+        "name": "ST-LINK/V3",
+        "quantity": 5
+      },
+      {
+        "name": "CMSIS-DAP debugger",
+        "quantity": 3
+      },
+      {
+        "name": "USB-to-TTL converter",
+        "quantity": 10
+      },
+      {
+        "name": "USB-to-UART converter",
+        "quantity": 10
+      },
+      {
+        "name": "USB-to-RS485 converter",
+        "quantity": 5
+      },
+      {
+        "name": "USB-to-CAN adapter",
+        "quantity": 3
+      },
+      {
+        "name": "SWD programmer",
+        "quantity": 5
+      },
+      {
+        "name": "JTAG programmer",
+        "quantity": 3
+      },
+      {
+        "name": "AVR ISP programmer",
+        "quantity": 3
+      },
+      {
+        "name": "EEPROM programmer",
+        "quantity": 2
+      },
+      {
+        "name": "SPI programmer",
+        "quantity": 3
+      },
+      {
+        "name": "ESP32 USB programming boards",
+        "quantity": 5
+      },
+      {
+        "name": "Logic analyzer 8-channel",
+        "quantity": 5
+      },
+      {
+        "name": "Logic analyzer 16-channel",
+        "quantity": 2
+      },
+      {
+        "name": "USB protocol analyzer",
+        "quantity": 2
+      },
+      {
+        "name": "USB-C protocol analyzer",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "category": "Display & HMI Components",
+    "items": [
+      {
+        "name": "16x2 LCD",
+        "quantity": 10
+      },
+      {
+        "name": "16x2 LCD with I2C module",
+        "quantity": 10
+      },
+      {
+        "name": "20x4 LCD",
+        "quantity": 5
+      },
+      {
+        "name": "20x4 LCD with I2C",
+        "quantity": 5
+      },
+      {
+        "name": "0.96-inch OLED I2C",
+        "quantity": 10
+      },
+      {
+        "name": "1.3-inch OLED",
+        "quantity": 5
+      },
+      {
+        "name": "1.54-inch OLED",
+        "quantity": 3
+      },
+      {
+        "name": "1.8-inch TFT",
+        "quantity": 5
+      },
+      {
+        "name": "2.4-inch TFT SPI",
+        "quantity": 5
+      },
+      {
+        "name": "2.4-inch TFT Touch",
+        "quantity": 5
+      },
+      {
+        "name": "2.8-inch TFT Touch",
+        "quantity": 3
+      },
+      {
+        "name": "3.5-inch TFT Touch",
+        "quantity": 3
+      },
+      {
+        "name": "4.3-inch TFT Touch",
+        "quantity": 2
+      },
+      {
+        "name": "5-inch HDMI display",
+        "quantity": 2
+      },
+      {
+        "name": "7-inch HDMI touch display",
+        "quantity": 2
+      },
+      {
+        "name": "2.13-inch e-paper display",
+        "quantity": 3
+      },
+      {
+        "name": "4.2-inch e-paper display",
+        "quantity": 2
+      },
+      {
+        "name": "7-segment display",
+        "quantity": 10
+      },
+      {
+        "name": "8x8 LED matrix",
+        "quantity": 0
+      },
+      {
+        "name": "RGB LED matrix",
+        "quantity": 3
+      },
+      {
+        "name": "WS2812B LED strip",
+        "quantity": 5
+      },
+      {
+        "name": "WS2812B LED matrix",
+        "quantity": 3
+      },
+      {
+        "name": "RGB LED modules",
+        "quantity": 20
+      },
+      {
+        "name": "NeoPixel rings",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Communication – Wi-Fi / Bluetooth",
+    "items": [
+      {
+        "name": "ESP32 Wi-Fi/BLE",
+        "quantity": 0
+      },
+      {
+        "name": "ESP32-C3 BLE/Wi-Fi",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-S3 Wi-Fi/BLE",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-C6 Wi-Fi 6/BLE",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-H2 BLE/802.15.4",
+        "quantity": 5
+      },
+      {
+        "name": "HC-05 Bluetooth",
+        "quantity": 0
+      },
+      {
+        "name": "HC-06 Bluetooth",
+        "quantity": 0
+      },
+      {
+        "name": "nRF52840 BLE module",
+        "quantity": 5
+      },
+      {
+        "name": "BLE development board",
+        "quantity": 3
+      },
+      {
+        "name": "Wi-Fi development module",
+        "quantity": 5
+      },
+      {
+        "name": "W5500 Ethernet module",
+        "quantity": 5
+      },
+      {
+        "name": "Ethernet PHY development board",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "category": "Zigbee / Thread / Matter",
+    "items": [
+      {
+        "name": "CC2530 Zigbee module",
+        "quantity": 5
+      },
+      {
+        "name": "CC2652P Zigbee module",
+        "quantity": 5
+      },
+      {
+        "name": "Zigbee USB coordinator",
+        "quantity": 2
+      },
+      {
+        "name": "Zigbee development kit",
+        "quantity": 3
+      },
+      {
+        "name": "ESP32-H2 Zigbee/Thread board",
+        "quantity": 5
+      },
+      {
+        "name": "Thread development board",
+        "quantity": 3
+      },
+      {
+        "name": "Matter development board",
+        "quantity": 3
+      },
+      {
+        "name": "802.15.4 development board",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "category": "LoRa / RF / Sub-GHz",
+    "items": [
+      {
+        "name": "SX1276 LoRa module",
+        "quantity": 5
+      },
+      {
+        "name": "SX1278 LoRa module",
+        "quantity": 10
+      },
+      {
+        "name": "SX1262 LoRa module",
+        "quantity": 5
+      },
+      {
+        "name": "Ebyte E22 LoRa module",
+        "quantity": 5
+      },
+      {
+        "name": "Ebyte E32 LoRa module",
+        "quantity": 5
+      },
+      {
+        "name": "LoRa GPS tracker module",
+        "quantity": 3
+      },
+      {
+        "name": "LoRaWAN node",
+        "quantity": 5
+      },
+      {
+        "name": "LoRaWAN gateway",
+        "quantity": 1
+      },
+      {
+        "name": "HC-12 433 MHz module",
+        "quantity": 5
+      },
+      {
+        "name": "CC1101 RF module",
+        "quantity": 5
+      },
+      {
+        "name": "433 MHz RF transmitter",
+        "quantity": 10
+      },
+      {
+        "name": "433 MHz RF receiver",
+        "quantity": 10
+      },
+      {
+        "name": "868/915 MHz RF module",
+        "quantity": 5
+      },
+      {
+        "name": "nRF24L01",
+        "quantity": 0
+      },
+      {
+        "name": "nRF24L01 PA/LNA",
+        "quantity": 5
+      },
+      {
+        "name": "SDR USB receiver",
+        "quantity": 2
+      },
+      {
+        "name": "RF antenna assortment",
+        "quantity": 0
+      },
+      {
+        "name": "SMA connector assortment",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "category": "CAN / CAN-FD / RS485 / Industrial Communication",
+    "items": [
+      {
+        "name": "MCP2515 CAN module",
+        "quantity": 5
+      },
+      {
+        "name": "CAN transceiver module",
+        "quantity": 10
+      },
+      {
+        "name": "CAN-FD development board",
+        "quantity": 3
+      },
+      {
+        "name": "CAN analyzer",
+        "quantity": 2
+      },
+      {
+        "name": "USB-CAN adapter",
+        "quantity": 3
+      },
+      {
+        "name": "MAX485 module",
+        "quantity": 10
+      },
+      {
+        "name": "Isolated RS485 module",
+        "quantity": 5
+      },
+      {
+        "name": "Modbus RTU module",
+        "quantity": 5
+      },
+      {
+        "name": "Modbus TCP module",
+        "quantity": 3
+      },
+      {
+        "name": "LIN bus development module",
+        "quantity": 3
+      },
+      {
+        "name": "Ethernet W5500",
+        "quantity": 5
+      },
+      {
+        "name": "Industrial Ethernet development board",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "category": "Basic Sensors – General Student Projects",
+    "items": [
+      {
+        "name": "LDR",
+        "quantity": 0
+      },
+      {
+        "name": "IR obstacle sensor",
+        "quantity": 0
+      },
+      {
+        "name": "IR reflective sensor",
+        "quantity": 20
+      },
+      {
+        "name": "PIR sensor",
+        "quantity": 20
+      },
+      {
+        "name": "Ultrasonic HC-SR04",
+        "quantity": 0
+      },
+      {
+        "name": "Water-level sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Rain sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Soil-moisture sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Flame sensor",
+        "quantity": 10
+      },
+      {
+        "name": "Sound sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Vibration sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Touch sensor TTP223",
+        "quantity": 0
+      },
+      {
+        "name": "Capacitive touch module",
+        "quantity": 10
+      },
+      {
+        "name": "Hall-effect sensor",
+        "quantity": 10
+      },
+      {
+        "name": "Magnetic reed switch",
+        "quantity": 10
+      },
+      {
+        "name": "Limit switch",
+        "quantity": 0
+      },
+      {
+        "name": "Rotary encoder",
+        "quantity": 0
+      },
+      {
+        "name": "Joystick module",
+        "quantity": 10
+      },
+      {
+        "name": "5-way joystick",
+        "quantity": 5
+      },
+      {
+        "name": "Tilt sensor",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "category": "Advanced IMU / Motion Sensors",
+    "items": [
+      {
+        "name": "MPU6050",
+        "quantity": 0
+      },
+      {
+        "name": "MPU6500",
+        "quantity": 5
+      },
+      {
+        "name": "MPU9250",
+        "quantity": 5
+      },
+      {
+        "name": "ICM-20948",
+        "quantity": 5
+      },
+      {
+        "name": "BMI160",
+        "quantity": 5
+      },
+      {
+        "name": "BNO055",
+        "quantity": 5
+      },
+      {
+        "name": "BNO085/BNO086",
+        "quantity": 5
+      },
+      {
+        "name": "LIS3DH",
+        "quantity": 5
+      },
+      {
+        "name": "ADXL345",
+        "quantity": 0
+      },
+      {
+        "name": "ADXL355",
+        "quantity": 3
+      },
+      {
+        "name": "LIS3MDL magnetometer",
+        "quantity": 5
+      },
+      {
+        "name": "QMC5883L magnetometer",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Distance / ToF / LiDAR",
+    "items": [
+      {
+        "name": "VL53L0X ToF",
+        "quantity": 10
+      },
+      {
+        "name": "VL53L1X ToF",
+        "quantity": 5
+      },
+      {
+        "name": "VL53L5CX 8x8 ToF",
+        "quantity": 5
+      },
+      {
+        "name": "VL53L8CX 8x8 ToF",
+        "quantity": 3
+      },
+      {
+        "name": "TF-Luna LiDAR",
+        "quantity": 3
+      },
+      {
+        "name": "TFmini-S LiDAR",
+        "quantity": 3
+      },
+      {
+        "name": "2D LiDAR",
+        "quantity": 2
+      },
+      {
+        "name": "Optical-flow sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Laser distance sensor",
+        "quantity": 3
+      },
+      {
+        "name": "IR distance sensor",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Temperature / Humidity / Pressure",
+    "items": [
+      {
+        "name": "DHT11",
+        "quantity": 0
+      },
+      {
+        "name": "DHT22",
+        "quantity": 0
+      },
+      {
+        "name": "BME280",
+        "quantity": 10
+      },
+      {
+        "name": "BME680",
+        "quantity": 5
+      },
+      {
+        "name": "BME688",
+        "quantity": 5
+      },
+      {
+        "name": "SHT31",
+        "quantity": 5
+      },
+      {
+        "name": "SHT40",
+        "quantity": 5
+      },
+      {
+        "name": "SHT45",
+        "quantity": 3
+      },
+      {
+        "name": "BMP280",
+        "quantity": 5
+      },
+      {
+        "name": "BMP390",
+        "quantity": 5
+      },
+      {
+        "name": "DPS310",
+        "quantity": 3
+      },
+      {
+        "name": "DS18B20",
+        "quantity": 10
+      },
+      {
+        "name": "MAX6675 thermocouple module",
+        "quantity": 5
+      },
+      {
+        "name": "MAX31855 thermocouple module",
+        "quantity": 3
+      },
+      {
+        "name": "K-type thermocouple",
+        "quantity": 10
+      },
+      {
+        "name": "PT100 sensor",
+        "quantity": 5
+      },
+      {
+        "name": "PT1000 sensor",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Gas / Air Quality Sensors",
+    "items": [
+      {
+        "name": "MQ-2",
+        "quantity": 0
+      },
+      {
+        "name": "MQ-3",
+        "quantity": 5
+      },
+      {
+        "name": "MQ-4",
+        "quantity": 5
+      },
+      {
+        "name": "MQ-5",
+        "quantity": 5
+      },
+      {
+        "name": "MQ-6",
+        "quantity": 0
+      },
+      {
+        "name": "MQ-7",
+        "quantity": 0
+      },
+      {
+        "name": "MQ-8",
+        "quantity": 0
+      },
+      {
+        "name": "MQ-9",
+        "quantity": 0
+      },
+      {
+        "name": "MQ-135",
+        "quantity": 10
+      },
+      {
+        "name": "SGP30",
+        "quantity": 5
+      },
+      {
+        "name": "SGP40",
+        "quantity": 5
+      },
+      {
+        "name": "ENS160",
+        "quantity": 5
+      },
+      {
+        "name": "BME688",
+        "quantity": 5
+      },
+      {
+        "name": "MH-Z19B CO2 sensor",
+        "quantity": 5
+      },
+      {
+        "name": "PMS5003 PM2.5 sensor",
+        "quantity": 3
+      },
+      {
+        "name": "SPS30 particulate sensor",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "category": "Light / Color / Optical Sensors",
+    "items": [
+      {
+        "name": "BH1750",
+        "quantity": 5
+      },
+      {
+        "name": "TSL2561",
+        "quantity": 3
+      },
+      {
+        "name": "TSL2591",
+        "quantity": 3
+      },
+      {
+        "name": "APDS9960",
+        "quantity": 5
+      },
+      {
+        "name": "TCS3200 color sensor",
+        "quantity": 5
+      },
+      {
+        "name": "TCS34725 color sensor",
+        "quantity": 5
+      },
+      {
+        "name": "IR receiver",
+        "quantity": 10
+      },
+      {
+        "name": "IR LED",
+        "quantity": 20
+      },
+      {
+        "name": "UV sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Ambient light sensor",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Gas / Chemical / Water Quality",
+    "items": [
+      {
+        "name": "TDS sensor",
+        "quantity": 0
+      },
+      {
+        "name": "pH sensor module",
+        "quantity": 5
+      },
+      {
+        "name": "EC sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Turbidity sensor",
+        "quantity": 5
+      },
+      {
+        "name": "ORP sensor module",
+        "quantity": 2
+      },
+      {
+        "name": "Water temperature sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Water-flow sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Pressure sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Water-level sensor",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "category": "Force / Weight / Strain",
+    "items": [
+      {
+        "name": "Load cell 1 kg",
+        "quantity": 5
+      },
+      {
+        "name": "Load cell 5 kg",
+        "quantity": 5
+      },
+      {
+        "name": "Load cell 10 kg",
+        "quantity": 5
+      },
+      {
+        "name": "Load cell 20 kg",
+        "quantity": 3
+      },
+      {
+        "name": "HX711 module",
+        "quantity": 10
+      },
+      {
+        "name": "FSR force sensor",
+        "quantity": 10
+      },
+      {
+        "name": "Strain gauge",
+        "quantity": 10
+      },
+      {
+        "name": "Flex sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Piezoelectric sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Force sensor",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Current / Voltage / Power Measurement",
+    "items": [
+      {
+        "name": "INA219",
+        "quantity": 10
+      },
+      {
+        "name": "INA226",
+        "quantity": 10
+      },
+      {
+        "name": "INA228",
+        "quantity": 5
+      },
+      {
+        "name": "ACS712",
+        "quantity": 10
+      },
+      {
+        "name": "ACS758",
+        "quantity": 5
+      },
+      {
+        "name": "Hall-effect current sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Voltage divider module",
+        "quantity": 10
+      },
+      {
+        "name": "DC voltage/current meter",
+        "quantity": 0
+      },
+      {
+        "name": "USB power meter",
+        "quantity": 5
+      },
+      {
+        "name": "USB-C PD analyzer",
+        "quantity": 2
+      },
+      {
+        "name": "DC watt meter",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "ADC / DAC / Interface IC Modules",
+    "items": [
+      {
+        "name": "ADS1115 16-bit ADC",
+        "quantity": 10
+      },
+      {
+        "name": "ADS1256 ADC",
+        "quantity": 3
+      },
+      {
+        "name": "MCP3008 ADC",
+        "quantity": 5
+      },
+      {
+        "name": "MCP4725 DAC",
+        "quantity": 5
+      },
+      {
+        "name": "MCP4921 DAC",
+        "quantity": 3
+      },
+      {
+        "name": "MCP23017 GPIO expander",
+        "quantity": 5
+      },
+      {
+        "name": "PCF8574 I2C expander",
+        "quantity": 10
+      },
+      {
+        "name": "TCA9548A I2C multiplexer",
+        "quantity": 5
+      },
+      {
+        "name": "CD4051 multiplexer",
+        "quantity": 10
+      },
+      {
+        "name": "CD74HC4067 multiplexer",
+        "quantity": 5
+      },
+      {
+        "name": "4-channel logic level converter",
+        "quantity": 10
+      },
+      {
+        "name": "8-channel logic level converter",
+        "quantity": 5
+      },
+      {
+        "name": "Digital isolator module",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "RTC / Memory / Storage",
+    "items": [
+      {
+        "name": "DS3231 RTC",
+        "quantity": 10
+      },
+      {
+        "name": "DS1307 RTC",
+        "quantity": 5
+      },
+      {
+        "name": "I2C EEPROM module",
+        "quantity": 5
+      },
+      {
+        "name": "FRAM module",
+        "quantity": 5
+      },
+      {
+        "name": "SPI Flash module",
+        "quantity": 5
+      },
+      {
+        "name": "MicroSD module",
+        "quantity": 10
+      },
+      {
+        "name": "32 GB microSD",
+        "quantity": 0
+      },
+      {
+        "name": "64 GB microSD",
+        "quantity": 5
+      },
+      {
+        "name": "SD card adapter",
+        "quantity": 0
+      },
+      {
+        "name": "USB flash drive",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Audio / Voice / Speech",
+    "items": [
+      {
+        "name": "Electret microphone",
+        "quantity": 0
+      },
+      {
+        "name": "MAX4466 microphone amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "MAX9814 microphone amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "INMP441 I2S microphone",
+        "quantity": 10
+      },
+      {
+        "name": "SPH0645 I2S microphone",
+        "quantity": 5
+      },
+      {
+        "name": "2-microphone array",
+        "quantity": 3
+      },
+      {
+        "name": "4-microphone array",
+        "quantity": 2
+      },
+      {
+        "name": "PAM8403 amplifier",
+        "quantity": 10
+      },
+      {
+        "name": "MAX98357A I2S amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "TPA3116 amplifier",
+        "quantity": 3
+      },
+      {
+        "name": "PCM5102 DAC",
+        "quantity": 3
+      },
+      {
+        "name": "4/8 ohm speakers",
+        "quantity": 10
+      },
+      {
+        "name": "Buzzer",
+        "quantity": 20
+      },
+      {
+        "name": "Active buzzer",
+        "quantity": 10
+      },
+      {
+        "name": "Passive buzzer",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "category": "Camera / Computer Vision",
+    "items": [
+      {
+        "name": "ESP32-CAM",
+        "quantity": 5
+      },
+      {
+        "name": "OV2640 camera",
+        "quantity": 5
+      },
+      {
+        "name": "OV5640 camera",
+        "quantity": 3
+      },
+      {
+        "name": "OV7670 camera",
+        "quantity": 3
+      },
+      {
+        "name": "IMX219 camera",
+        "quantity": 3
+      },
+      {
+        "name": "IMX477 camera",
+        "quantity": 2
+      },
+      {
+        "name": "Global-shutter camera",
+        "quantity": 2
+      },
+      {
+        "name": "Stereo camera",
+        "quantity": 2
+      },
+      {
+        "name": "Depth camera",
+        "quantity": 2
+      },
+      {
+        "name": "IR camera",
+        "quantity": 1
+      },
+      {
+        "name": "Thermal camera module",
+        "quantity": 1
+      },
+      {
+        "name": "Camera lens assortment",
+        "quantity": 0
+      },
+      {
+        "name": "IR LED illumination",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "AI / Edge Computing",
+    "items": [
+      {
+        "name": "Raspberry Pi 5",
+        "quantity": 0
+      },
+      {
+        "name": "Raspberry Pi 4",
+        "quantity": 0
+      },
+      {
+        "name": "Jetson Orin Nano",
+        "quantity": 0
+      },
+      {
+        "name": "Jetson Orin NX",
+        "quantity": 0
+      },
+      {
+        "name": "Google Coral USB Accelerator",
+        "quantity": 1
+      },
+      {
+        "name": "Hailo AI accelerator",
+        "quantity": 2
+      },
+      {
+        "name": "Raspberry Pi AI accelerator",
+        "quantity": 2
+      },
+      {
+        "name": "OpenMV Cam",
+        "quantity": 0
+      },
+      {
+        "name": "ESP32-S3 AI development board",
+        "quantity": 5
+      },
+      {
+        "name": "K210 AI board",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "category": "GPS / GNSS / Navigation",
+    "items": [
+      {
+        "name": "NEO-6M GPS",
+        "quantity": 0
+      },
+      {
+        "name": "NEO-M8N GPS",
+        "quantity": 5
+      },
+      {
+        "name": "u-blox M10 GNSS",
+        "quantity": 5
+      },
+      {
+        "name": "Multi-band GNSS module",
+        "quantity": 3
+      },
+      {
+        "name": "RTK GNSS module",
+        "quantity": 2
+      },
+      {
+        "name": "GPS compass module",
+        "quantity": 3
+      },
+      {
+        "name": "QMC5883L compass",
+        "quantity": 5
+      },
+      {
+        "name": "Optical-flow sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Barometer module",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "RFID / NFC / Security",
+    "items": [
+      {
+        "name": "RC522 RFID",
+        "quantity": 0
+      },
+      {
+        "name": "PN532 NFC",
+        "quantity": 5
+      },
+      {
+        "name": "RFID cards",
+        "quantity": 30
+      },
+      {
+        "name": "RFID tags",
+        "quantity": 30
+      },
+      {
+        "name": "NFC tags",
+        "quantity": 20
+      },
+      {
+        "name": "Fingerprint sensor",
+        "quantity": 5
+      },
+      {
+        "name": "ATECC608A secure element",
+        "quantity": 5
+      },
+      {
+        "name": "TPM development module",
+        "quantity": 2
+      },
+      {
+        "name": "PIR security sensor",
+        "quantity": 0
+      },
+      {
+        "name": "Magnetic door sensor",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "category": "Motors – DC / Gear / Encoder",
+    "items": [
+      {
+        "name": "60 RPM DC gear motor",
+        "quantity": 0
+      },
+      {
+        "name": "100 RPM DC gear motor",
+        "quantity": 0
+      },
+      {
+        "name": "200 RPM DC gear motor",
+        "quantity": 0
+      },
+      {
+        "name": "300 RPM DC gear motor",
+        "quantity": 10
+      },
+      {
+        "name": "Metal gear motor with encoder",
+        "quantity": 10
+      },
+      {
+        "name": "High-torque DC gear motor",
+        "quantity": 5
+      },
+      {
+        "name": "Planetary gear motor",
+        "quantity": 5
+      },
+      {
+        "name": "Wheel motor",
+        "quantity": 5
+      },
+      {
+        "name": "Encoder motor",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "category": "BLDC Motors & ESC",
+    "items": [
+      {
+        "name": "2204 BLDC motor",
+        "quantity": 5
+      },
+      {
+        "name": "2212 BLDC motor",
+        "quantity": 0
+      },
+      {
+        "name": "2806 BLDC motor",
+        "quantity": 5
+      },
+      {
+        "name": "3508 BLDC motor",
+        "quantity": 3
+      },
+      {
+        "name": "5010 BLDC motor",
+        "quantity": 3
+      },
+      {
+        "name": "6374 BLDC motor",
+        "quantity": 2
+      },
+      {
+        "name": "20A ESC",
+        "quantity": 5
+      },
+      {
+        "name": "30A ESC",
+        "quantity": 0
+      },
+      {
+        "name": "40A ESC",
+        "quantity": 5
+      },
+      {
+        "name": "60A ESC",
+        "quantity": 3
+      },
+      {
+        "name": "Bidirectional ESC",
+        "quantity": 3
+      },
+      {
+        "name": "FOC BLDC controller",
+        "quantity": 3
+      },
+      {
+        "name": "ODrive-type motor controller",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "category": "Servo / Stepper / Actuator",
+    "items": [
+      {
+        "name": "SG90",
+        "quantity": 0
+      },
+      {
+        "name": "MG90",
+        "quantity": 0
+      },
+      {
+        "name": "MG996R",
+        "quantity": 0
+      },
+      {
+        "name": "MG995",
+        "quantity": 0
+      },
+      {
+        "name": "High-torque metal servo",
+        "quantity": 0
+      },
+      {
+        "name": "PCA9685 16-channel servo driver",
+        "quantity": 0
+      },
+      {
+        "name": "NEMA17 stepper motor",
+        "quantity": 10
+      },
+      {
+        "name": "NEMA23 stepper motor",
+        "quantity": 3
+      },
+      {
+        "name": "A4988 driver",
+        "quantity": 10
+      },
+      {
+        "name": "DRV8825 driver",
+        "quantity": 10
+      },
+      {
+        "name": "TMC2209 driver",
+        "quantity": 5
+      },
+      {
+        "name": "TMC5160 driver",
+        "quantity": 3
+      },
+      {
+        "name": "Closed-loop stepper",
+        "quantity": 2
+      },
+      {
+        "name": "Mini linear actuator",
+        "quantity": 3
+      },
+      {
+        "name": "DC linear actuator",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "category": "Rotary / Magnetic / Position Encoders",
+    "items": [
+      {
+        "name": "KY-040 rotary encoder",
+        "quantity": 0
+      },
+      {
+        "name": "AS5600 magnetic encoder",
+        "quantity": 10
+      },
+      {
+        "name": "AS5048A magnetic encoder",
+        "quantity": 5
+      },
+      {
+        "name": "AS5047P encoder",
+        "quantity": 3
+      },
+      {
+        "name": "Incremental rotary encoder",
+        "quantity": 10
+      },
+      {
+        "name": "Optical encoder",
+        "quantity": 5
+      },
+      {
+        "name": "Hall encoder",
+        "quantity": 5
+      },
+      {
+        "name": "Quadrature encoder",
+        "quantity": 5
+      },
+      {
+        "name": "Wheel encoder",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Motor Driver Modules",
+    "items": [
+      {
+        "name": "L298N",
+        "quantity": 0
+      },
+      {
+        "name": "TB6612FNG",
+        "quantity": 10
+      },
+      {
+        "name": "DRV8833",
+        "quantity": 10
+      },
+      {
+        "name": "BTS7960",
+        "quantity": 10
+      },
+      {
+        "name": "VNH2SP30",
+        "quantity": 5
+      },
+      {
+        "name": "Cytron 10A driver",
+        "quantity": 0
+      },
+      {
+        "name": "Cytron high-current driver",
+        "quantity": 3
+      },
+      {
+        "name": "Dual-channel motor driver",
+        "quantity": 5
+      },
+      {
+        "name": "CAN motor controller",
+        "quantity": 3
+      },
+      {
+        "name": "BLDC motor controller",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "category": "Power Supply / Buck / Boost",
+    "items": [
+      {
+        "name": "LM2596 buck module",
+        "quantity": 10
+      },
+      {
+        "name": "MP1584 buck module",
+        "quantity": 10
+      },
+      {
+        "name": "MP2307 buck module",
+        "quantity": 5
+      },
+      {
+        "name": "XL4015 buck module",
+        "quantity": 5
+      },
+      {
+        "name": "5V 3A buck converter",
+        "quantity": 0
+      },
+      {
+        "name": "5V 10A buck converter",
+        "quantity": 0
+      },
+      {
+        "name": "12V buck converter",
+        "quantity": 5
+      },
+      {
+        "name": "Boost MT3608",
+        "quantity": 10
+      },
+      {
+        "name": "XL6009 boost",
+        "quantity": 5
+      },
+      {
+        "name": "High-current boost converter",
+        "quantity": 3
+      },
+      {
+        "name": "Buck-boost LTC3780 module",
+        "quantity": 5
+      },
+      {
+        "name": "TPS63070 development module",
+        "quantity": 3
+      },
+      {
+        "name": "Adjustable constant-current module",
+        "quantity": 5
+      },
+      {
+        "name": "Adjustable constant-voltage module",
+        "quantity": 5
+      },
+      {
+        "name": "Isolated DC-DC module",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "USB-C / Portable Product Power",
+    "items": [
+      {
+        "name": "USB-C breakout board",
+        "quantity": 10
+      },
+      {
+        "name": "USB-C PD trigger module",
+        "quantity": 10
+      },
+      {
+        "name": "USB-C PD sink module",
+        "quantity": 5
+      },
+      {
+        "name": "USB-C PD source module",
+        "quantity": 3
+      },
+      {
+        "name": "USB-C QC trigger",
+        "quantity": 5
+      },
+      {
+        "name": "USB-C power meter",
+        "quantity": 3
+      },
+      {
+        "name": "5V USB boost module",
+        "quantity": 5
+      },
+      {
+        "name": "Li-ion USB charger module",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "category": "Battery / BMS Components",
+    "items": [
+      {
+        "name": "TP4056 charger",
+        "quantity": 20
+      },
+      {
+        "name": "1S Li-ion BMS",
+        "quantity": 10
+      },
+      {
+        "name": "2S BMS",
+        "quantity": 10
+      },
+      {
+        "name": "3S BMS",
+        "quantity": 10
+      },
+      {
+        "name": "4S BMS",
+        "quantity": 5
+      },
+      {
+        "name": "18650 battery holder",
+        "quantity": 20
+      },
+      {
+        "name": "21700 battery holder",
+        "quantity": 10
+      },
+      {
+        "name": "Battery fuel gauge module",
+        "quantity": 5
+      },
+      {
+        "name": "Battery protection module",
+        "quantity": 10
+      },
+      {
+        "name": "Li-ion cells",
+        "quantity": 0
+      },
+      {
+        "name": "LiPo batteries",
+        "quantity": 0
+      },
+      {
+        "name": "LiFePO4 development cells",
+        "quantity": 10
+      },
+      {
+        "name": "Cell voltage monitor",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Industrial Sensors",
+    "items": [
+      {
+        "name": "Inductive proximity sensor NPN",
+        "quantity": 5
+      },
+      {
+        "name": "Inductive proximity sensor PNP",
+        "quantity": 5
+      },
+      {
+        "name": "Capacitive proximity sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Photoelectric sensor",
+        "quantity": 5
+      },
+      {
+        "name": "24V proximity sensor",
+        "quantity": 10
+      },
+      {
+        "name": "4–20mA sensor",
+        "quantity": 5
+      },
+      {
+        "name": "0–10V sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Industrial pressure sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Industrial temperature sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Industrial flow sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Industrial level sensor",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "category": "Relay / Switching / Driver Components",
+    "items": [
+      {
+        "name": "1-channel relay module",
+        "quantity": 10
+      },
+      {
+        "name": "2-channel relay module",
+        "quantity": 0
+      },
+      {
+        "name": "4-channel relay module",
+        "quantity": 10
+      },
+      {
+        "name": "8-channel relay module",
+        "quantity": 5
+      },
+      {
+        "name": "Solid-state relay",
+        "quantity": 5
+      },
+      {
+        "name": "MOSFET switch module",
+        "quantity": 10
+      },
+      {
+        "name": "High-side switch module",
+        "quantity": 5
+      },
+      {
+        "name": "Optocoupler module",
+        "quantity": 10
+      },
+      {
+        "name": "TRIAC module",
+        "quantity": 5
+      },
+      {
+        "name": "IGBT driver module",
+        "quantity": 3
+      },
+      {
+        "name": "MOSFET driver module",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Common Interface / Expansion Modules",
+    "items": [
+      {
+        "name": "I2C multiplexer TCA9548A",
+        "quantity": 5
+      },
+      {
+        "name": "GPIO expander MCP23017",
+        "quantity": 5
+      },
+      {
+        "name": "PCF8574",
+        "quantity": 10
+      },
+      {
+        "name": "8-channel ADC",
+        "quantity": 5
+      },
+      {
+        "name": "16-channel ADC",
+        "quantity": 3
+      },
+      {
+        "name": "DAC module",
+        "quantity": 5
+      },
+      {
+        "name": "Logic level converter",
+        "quantity": 10
+      },
+      {
+        "name": "RS485 transceiver",
+        "quantity": 10
+      },
+      {
+        "name": "CAN transceiver",
+        "quantity": 10
+      },
+      {
+        "name": "Ethernet W5500",
+        "quantity": 5
+      },
+      {
+        "name": "SD card module",
+        "quantity": 10
+      },
+      {
+        "name": "RTC module",
+        "quantity": 10
+      },
+      {
+        "name": "EEPROM module",
+        "quantity": 5
+      },
+      {
+        "name": "FRAM module",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "LEDs / Indicators / User Controls",
+    "items": [
+      {
+        "name": "Red LED",
+        "quantity": 100
+      },
+      {
+        "name": "Green LED",
+        "quantity": 100
+      },
+      {
+        "name": "Blue LED",
+        "quantity": 100
+      },
+      {
+        "name": "White LED",
+        "quantity": 100
+      },
+      {
+        "name": "Yellow LED",
+        "quantity": 100
+      },
+      {
+        "name": "RGB LED",
+        "quantity": 50
+      },
+      {
+        "name": "High-power LED",
+        "quantity": 20
+      },
+      {
+        "name": "LED strip",
+        "quantity": 5
+      },
+      {
+        "name": "7-segment display",
+        "quantity": 10
+      },
+      {
+        "name": "Push button",
+        "quantity": 100
+      },
+      {
+        "name": "Toggle switch",
+        "quantity": 30
+      },
+      {
+        "name": "Rocker switch",
+        "quantity": 20
+      },
+      {
+        "name": "DPDT switch",
+        "quantity": 0
+      },
+      {
+        "name": "Rotary switch",
+        "quantity": 10
+      },
+      {
+        "name": "Emergency push button",
+        "quantity": 5
+      },
+      {
+        "name": "Buzzer",
+        "quantity": 20
+      }
+    ]
+  },
+  {
+    "category": "Connectors / Wiring / Prototype Accessories",
+    "items": [
+      {
+        "name": "Dupont M-M jumper wires",
+        "quantity": 0
+      },
+      {
+        "name": "Dupont M-F jumper wires",
+        "quantity": 0
+      },
+      {
+        "name": "Dupont F-F jumper wires",
+        "quantity": 0
+      },
+      {
+        "name": "Breadboard",
+        "quantity": 20
+      },
+      {
+        "name": "Large breadboard",
+        "quantity": 10
+      },
+      {
+        "name": "PCB prototype board",
+        "quantity": 20
+      },
+      {
+        "name": "Screw terminal blocks",
+        "quantity": 50
+      },
+      {
+        "name": "JST connector kit",
+        "quantity": 0
+      },
+      {
+        "name": "Molex connector kit",
+        "quantity": 0
+      },
+      {
+        "name": "XT30 connectors",
+        "quantity": 0
+      },
+      {
+        "name": "XT60 connectors",
+        "quantity": 0
+      },
+      {
+        "name": "DC barrel connectors",
+        "quantity": 50
+      },
+      {
+        "name": "USB connectors",
+        "quantity": 20
+      },
+      {
+        "name": "SMA connectors",
+        "quantity": 20
+      },
+      {
+        "name": "BNC connectors",
+        "quantity": 20
+      },
+      {
+        "name": "Heat-shrink assortment",
+        "quantity": 0
+      },
+      {
+        "name": "Hook-up wire assortment",
+        "quantity": 0
+      },
+      {
+        "name": "Ribbon cable",
+        "quantity": 0
+      },
+      {
+        "name": "Silicone wire",
+        "quantity": 0
+      },
+      {
+        "name": "Cable ties",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "category": "Analog / Signal Conditioning",
+    "items": [
+      {
+        "name": "LM358",
+        "quantity": 20
+      },
+      {
+        "name": "LM324",
+        "quantity": 20
+      },
+      {
+        "name": "TL072",
+        "quantity": 10
+      },
+      {
+        "name": "MCP6002",
+        "quantity": 10
+      },
+      {
+        "name": "LM393 comparator",
+        "quantity": 20
+      },
+      {
+        "name": "INA128 instrumentation amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "AD620 instrumentation amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "Op-amp development boards",
+        "quantity": 10
+      },
+      {
+        "name": "Analog multiplexer",
+        "quantity": 10
+      },
+      {
+        "name": "Signal conditioning module",
+        "quantity": 10
+      },
+      {
+        "name": "4–20mA transmitter module",
+        "quantity": 5
+      },
+      {
+        "name": "4–20mA receiver module",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "category": "Transistors / MOSFET / Power Semiconductor Development",
+    "items": [
+      {
+        "name": "NPN transistor assortment",
+        "quantity": 0
+      },
+      {
+        "name": "PNP transistor assortment",
+        "quantity": 0
+      },
+      {
+        "name": "Logic-level N-MOSFET assortment",
+        "quantity": 0
+      },
+      {
+        "name": "P-MOSFET assortment",
+        "quantity": 0
+      },
+      {
+        "name": "High-current MOSFET assortment",
+        "quantity": 0
+      },
+      {
+        "name": "IGBT assortment",
+        "quantity": 0
+      },
+      {
+        "name": "MOSFET driver IC assortment",
+        "quantity": 0
+      },
+      {
+        "name": "Optocoupler assortment",
+        "quantity": 0
+      },
+      {
+        "name": "TVS diode assortment",
+        "quantity": 0
+      },
+      {
+        "name": "Bridge rectifier assortment",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "category": "Robotics / Autonomous Vehicle Components",
+    "items": [
+      {
+        "name": "Wheel encoder",
+        "quantity": 5
+      },
+      {
+        "name": "Motor encoder",
+        "quantity": 10
+      },
+      {
+        "name": "IMU",
+        "quantity": 10
+      },
+      {
+        "name": "LiDAR",
+        "quantity": 3
+      },
+      {
+        "name": "ToF sensor",
+        "quantity": 10
+      },
+      {
+        "name": "Depth camera",
+        "quantity": 2
+      },
+      {
+        "name": "GPS",
+        "quantity": 5
+      },
+      {
+        "name": "RTK GPS",
+        "quantity": 2
+      },
+      {
+        "name": "Magnetometer",
+        "quantity": 5
+      },
+      {
+        "name": "Barometer",
+        "quantity": 5
+      },
+      {
+        "name": "Current sensor",
+        "quantity": 10
+      },
+      {
+        "name": "CAN module",
+        "quantity": 10
+      },
+      {
+        "name": "Motor driver",
+        "quantity": 10
+      },
+      {
+        "name": "Servo driver",
+        "quantity": 5
+      },
+      {
+        "name": "BLDC controller",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "category": "Drone Development Components",
+    "items": [
+      {
+        "name": "BLDC drone motor",
+        "quantity": 0
+      },
+      {
+        "name": "CW motor",
+        "quantity": 0
+      },
+      {
+        "name": "CCW motor",
+        "quantity": 0
+      },
+      {
+        "name": "20A ESC",
+        "quantity": 10
+      },
+      {
+        "name": "30A ESC",
+        "quantity": 0
+      },
+      {
+        "name": "40A ESC",
+        "quantity": 5
+      },
+      {
+        "name": "60A ESC",
+        "quantity": 3
+      },
+      {
+        "name": "Pixhawk flight controller",
+        "quantity": 0
+      },
+      {
+        "name": "Cube flight controller",
+        "quantity": 0
+      },
+      {
+        "name": "GPS module",
+        "quantity": 0
+      },
+      {
+        "name": "RTK GPS",
+        "quantity": 2
+      },
+      {
+        "name": "Telemetry radio",
+        "quantity": 0
+      },
+      {
+        "name": "Optical-flow sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Rangefinder",
+        "quantity": 3
+      },
+      {
+        "name": "Current sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Voltage sensor",
+        "quantity": 5
+      },
+      {
+        "name": "FPV camera",
+        "quantity": 0
+      },
+      {
+        "name": "Digital FPV camera",
+        "quantity": 2
+      },
+      {
+        "name": "Propeller assortment",
+        "quantity": 0
+      },
+      {
+        "name": "LiPo battery",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "category": "AI / IoT Product Modules",
+    "items": [
+      {
+        "name": "ESP32-S3 AI board",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-C6 IoT board",
+        "quantity": 5
+      },
+      {
+        "name": "ESP32-H2 Matter/Zigbee board",
+        "quantity": 5
+      },
+      {
+        "name": "Edge AI camera",
+        "quantity": 3
+      },
+      {
+        "name": "Coral USB TPU",
+        "quantity": 1
+      },
+      {
+        "name": "Hailo accelerator",
+        "quantity": 2
+      },
+      {
+        "name": "OpenMV",
+        "quantity": 3
+      },
+      {
+        "name": "Jetson Orin Nano",
+        "quantity": 0
+      },
+      {
+        "name": "Jetson Orin NX",
+        "quantity": 0
+      },
+      {
+        "name": "Raspberry Pi 5",
+        "quantity": 0
+      },
+      {
+        "name": "Raspberry Pi AI accelerator",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "category": "Human Interface / Biometric Modules",
+    "items": [
+      {
+        "name": "Fingerprint module",
+        "quantity": 5
+      },
+      {
+        "name": "RFID module",
+        "quantity": 0
+      },
+      {
+        "name": "NFC module",
+        "quantity": 5
+      },
+      {
+        "name": "Capacitive touch",
+        "quantity": 0
+      },
+      {
+        "name": "Touch slider",
+        "quantity": 5
+      },
+      {
+        "name": "Touch wheel",
+        "quantity": 3
+      },
+      {
+        "name": "Force-sensitive resistor",
+        "quantity": 10
+      },
+      {
+        "name": "Joystick",
+        "quantity": 10
+      },
+      {
+        "name": "Rotary encoder",
+        "quantity": 0
+      },
+      {
+        "name": "Hall joystick",
+        "quantity": 5
+      },
+      {
+        "name": "IR remote receiver",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "category": "Product Enclosure / Prototyping Materials",
+    "items": [
+      {
+        "name": "Material",
+        "quantity": 0
+      },
+      {
+        "name": "Acrylic sheet 2mm",
+        "quantity": 0
+      },
+      {
+        "name": "Acrylic sheet 3mm",
+        "quantity": 0
+      },
+      {
+        "name": "MDF",
+        "quantity": 0
+      },
+      {
+        "name": "Foam sheet",
+        "quantity": 0
+      },
+      {
+        "name": "ABS sheet",
+        "quantity": 0
+      },
+      {
+        "name": "Polycarbonate sheet",
+        "quantity": 0
+      },
+      {
+        "name": "Aluminium sheet",
+        "quantity": 0
+      },
+      {
+        "name": "Aluminium extrusion",
+        "quantity": 0
+      },
+      {
+        "name": "Carbon-fiber sheet",
+        "quantity": 0
+      },
+      {
+        "name": "Carbon-fiber tube",
+        "quantity": 0
+      },
+      {
+        "name": "3D printer PLA",
+        "quantity": 0
+      },
+      {
+        "name": "PETG",
+        "quantity": 0
+      },
+      {
+        "name": "TPU",
+        "quantity": 0
+      },
+      {
+        "name": "ABS/ASA",
+        "quantity": 0
+      },
+      {
+        "name": "Nylon",
+        "quantity": 0
+      },
+      {
+        "name": "Carbon-fiber filament",
+        "quantity": 0
+      },
+      {
+        "name": "Heat-set inserts",
+        "quantity": 0
+      },
+      {
+        "name": "M2/M3/M4 screws",
+        "quantity": 0
+      },
+      {
+        "name": "Nuts and washers",
+        "quantity": 0
+      },
+      {
+        "name": "Bearings",
+        "quantity": 0
+      },
+      {
+        "name": "Magnets",
+        "quantity": 0
+      },
+      {
+        "name": "Double-sided tape",
+        "quantity": 10
+      },
+      {
+        "name": "Epoxy/adhesive",
+        "quantity": 10
+      },
+      {
+        "name": "Anabond",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "category": "Advanced D2P Expansion — High-End Boards & Sensors",
+    "items": [
+      {
+        "name": "STM32H743 Nucleo-144",
+        "quantity": 2
+      },
+      {
+        "name": "STM32H753 development board",
+        "quantity": 2
+      },
+      {
+        "name": "STM32H723 development board",
+        "quantity": 2
+      },
+      {
+        "name": "STM32G474 Nucleo board",
+        "quantity": 3
+      },
+      {
+        "name": "STM32U5 development board",
+        "quantity": 2
+      },
+      {
+        "name": "STM32WB55 wireless board",
+        "quantity": 2
+      },
+      {
+        "name": "STM32WL LoRa board",
+        "quantity": 2
+      },
+      {
+        "name": "TI C2000 F28004x development board",
+        "quantity": 2
+      },
+      {
+        "name": "TI C2000 F28379D development board",
+        "quantity": 2
+      },
+      {
+        "name": "TI AM243x industrial development board",
+        "quantity": 1
+      },
+      {
+        "name": "NXP i.MX RT1170 board",
+        "quantity": 2
+      },
+      {
+        "name": "NXP i.MX RT1060 board",
+        "quantity": 2
+      },
+      {
+        "name": "Renesas RA8 development board",
+        "quantity": 2
+      },
+      {
+        "name": "Teensy 4.1",
+        "quantity": 3
+      },
+      {
+        "name": "RP2350 development board",
+        "quantity": 3
+      },
+      {
+        "name": "Arduino GIGA R1 WiFi",
+        "quantity": 2
+      },
+      {
+        "name": "BeagleBone Black",
+        "quantity": 2
+      },
+      {
+        "name": "BeaglePlay",
+        "quantity": 2
+      },
+      {
+        "name": "Raspberry Pi Compute Module 4 carrier kit",
+        "quantity": 2
+      },
+      {
+        "name": "Raspberry Pi Compute Module 5 carrier kit",
+        "quantity": 2
+      },
+      {
+        "name": "NVIDIA Jetson Orin Nano Super",
+        "quantity": 2
+      },
+      {
+        "name": "NVIDIA Jetson Orin NX",
+        "quantity": 1
+      },
+      {
+        "name": "NVIDIA Jetson AGX Orin",
+        "quantity": 1
+      },
+      {
+        "name": "NVIDIA Jetson Xavier NX",
+        "quantity": 1
+      },
+      {
+        "name": "Raspberry Pi AI accelerator",
+        "quantity": 2
+      },
+      {
+        "name": "Google Coral USB Accelerator",
+        "quantity": 2
+      },
+      {
+        "name": "Hailo-8 AI accelerator",
+        "quantity": 2
+      },
+      {
+        "name": "Hailo-8L AI accelerator",
+        "quantity": 2
+      },
+      {
+        "name": "Intel Neural Compute Stick 2",
+        "quantity": 1
+      },
+      {
+        "name": "Kendryte K230 AI board",
+        "quantity": 2
+      },
+      {
+        "name": "Kendryte K210 AI board",
+        "quantity": 3
+      },
+      {
+        "name": "Sipeed Maix development board",
+        "quantity": 2
+      },
+      {
+        "name": "OpenMV H7 Plus",
+        "quantity": 2
+      },
+      {
+        "name": "Luxonis OAK-D",
+        "quantity": 2
+      },
+      {
+        "name": "Luxonis OAK-D Lite",
+        "quantity": 2
+      },
+      {
+        "name": "Sony IMX477 12.3MP camera",
+        "quantity": 2
+      },
+      {
+        "name": "Sony IMX219 camera",
+        "quantity": 3
+      },
+      {
+        "name": "Sony IMX462 low-light camera",
+        "quantity": 2
+      },
+      {
+        "name": "Sony IMX585 camera",
+        "quantity": 2
+      },
+      {
+        "name": "Global-shutter IMX296 camera",
+        "quantity": 2
+      },
+      {
+        "name": "Global-shutter IMX568 camera",
+        "quantity": 1
+      },
+      {
+        "name": "Stereo camera module",
+        "quantity": 2
+      },
+      {
+        "name": "OAK-D depth AI camera",
+        "quantity": 2
+      },
+      {
+        "name": "ToF depth camera",
+        "quantity": 2
+      },
+      {
+        "name": "Event-based vision camera",
+        "quantity": 1
+      },
+      {
+        "name": "USB industrial machine-vision camera",
+        "quantity": 2
+      },
+      {
+        "name": "SWIR camera module",
+        "quantity": 1
+      },
+      {
+        "name": "Camera lens kit",
+        "quantity": 0
+      },
+      {
+        "name": "M12 lens assortment",
+        "quantity": 0
+      },
+      {
+        "name": "BNO085 / BNO086",
+        "quantity": 5
+      },
+      {
+        "name": "ICM-20948",
+        "quantity": 5
+      },
+      {
+        "name": "ICM-42688-P",
+        "quantity": 5
+      },
+      {
+        "name": "BMI088",
+        "quantity": 3
+      },
+      {
+        "name": "BMI270",
+        "quantity": 5
+      },
+      {
+        "name": "ADXL355",
+        "quantity": 3
+      },
+      {
+        "name": "ADXL372",
+        "quantity": 2
+      },
+      {
+        "name": "IIS3DWB",
+        "quantity": 3
+      },
+      {
+        "name": "ASM330LHH",
+        "quantity": 3
+      },
+      {
+        "name": "MMC5983MA",
+        "quantity": 5
+      },
+      {
+        "name": "LIS2DW12",
+        "quantity": 5
+      },
+      {
+        "name": "LIS3MDL",
+        "quantity": 5
+      },
+      {
+        "name": "High-precision AHRS module",
+        "quantity": 2
+      },
+      {
+        "name": "Industrial IMU module",
+        "quantity": 2
+      },
+      {
+        "name": "BME680",
+        "quantity": 5
+      },
+      {
+        "name": "BME688",
+        "quantity": 5
+      },
+      {
+        "name": "BME690",
+        "quantity": 3
+      },
+      {
+        "name": "SHT45",
+        "quantity": 3
+      },
+      {
+        "name": "SCD41 CO2 sensor",
+        "quantity": 3
+      },
+      {
+        "name": "SCD30 CO2 sensor",
+        "quantity": 3
+      },
+      {
+        "name": "SGP40 VOC sensor",
+        "quantity": 5
+      },
+      {
+        "name": "ENS160 air-quality sensor",
+        "quantity": 5
+      },
+      {
+        "name": "DPS310 pressure sensor",
+        "quantity": 3
+      },
+      {
+        "name": "BMP390 pressure sensor",
+        "quantity": 5
+      },
+      {
+        "name": "MS5611 barometer",
+        "quantity": 3
+      },
+      {
+        "name": "Sensirion SPS30",
+        "quantity": 2
+      },
+      {
+        "name": "Sensirion SEN5x",
+        "quantity": 2
+      },
+      {
+        "name": "PMSA003I",
+        "quantity": 3
+      },
+      {
+        "name": "GUVA-S12SD UV sensor",
+        "quantity": 5
+      },
+      {
+        "name": "VEML6075 UVA/UVB sensor",
+        "quantity": 5
+      },
+      {
+        "name": "AS7331 spectral UV sensor",
+        "quantity": 2
+      },
+      {
+        "name": "AS7262 spectral sensor",
+        "quantity": 3
+      },
+      {
+        "name": "AS7263 spectral sensor",
+        "quantity": 3
+      },
+      {
+        "name": "AS7341 spectral sensor",
+        "quantity": 3
+      },
+      {
+        "name": "AS7343 spectral sensor",
+        "quantity": 2
+      },
+      {
+        "name": "TCS34725 color sensor",
+        "quantity": 5
+      },
+      {
+        "name": "TSL2591 high-dynamic-range light sensor",
+        "quantity": 5
+      },
+      {
+        "name": "OPT3001 ambient light sensor",
+        "quantity": 5
+      },
+      {
+        "name": "AMG8833 thermal sensor",
+        "quantity": 5
+      },
+      {
+        "name": "MLX90614 IR thermometer",
+        "quantity": 5
+      },
+      {
+        "name": "MLX90640 thermal array",
+        "quantity": 3
+      },
+      {
+        "name": "MLX90641 thermal array",
+        "quantity": 2
+      },
+      {
+        "name": "MLX90621 thermal array",
+        "quantity": 2
+      },
+      {
+        "name": "TMP117 precision temperature sensor",
+        "quantity": 5
+      },
+      {
+        "name": "TMP102 precision temperature sensor",
+        "quantity": 5
+      },
+      {
+        "name": "MAX31865 RTD interface",
+        "quantity": 3
+      },
+      {
+        "name": "MAX31856 thermocouple interface",
+        "quantity": 3
+      },
+      {
+        "name": "PT100 precision RTD",
+        "quantity": 5
+      },
+      {
+        "name": "MMC5983MA magnetometer",
+        "quantity": 5
+      },
+      {
+        "name": "RM3100 magnetometer",
+        "quantity": 3
+      },
+      {
+        "name": "LIS3MDL magnetometer",
+        "quantity": 5
+      },
+      {
+        "name": "TLE493D magnetic sensor",
+        "quantity": 3
+      },
+      {
+        "name": "AS3935 lightning sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Hall-effect linear sensor",
+        "quantity": 10
+      },
+      {
+        "name": "3-axis Hall sensor",
+        "quantity": 5
+      },
+      {
+        "name": "DFRobot Geiger counter",
+        "quantity": 2
+      },
+      {
+        "name": "Geiger-Müller tube module",
+        "quantity": 2
+      },
+      {
+        "name": "Radiation pulse counter interface",
+        "quantity": 2
+      },
+      {
+        "name": "Photodiode radiation detector module",
+        "quantity": 2
+      },
+      {
+        "name": "Scintillation detector interface",
+        "quantity": 1
+      },
+      {
+        "name": "Particle detector development module",
+        "quantity": 1
+      },
+      {
+        "name": "INA219",
+        "quantity": 10
+      },
+      {
+        "name": "INA226",
+        "quantity": 10
+      },
+      {
+        "name": "INA228",
+        "quantity": 5
+      },
+      {
+        "name": "INA238",
+        "quantity": 5
+      },
+      {
+        "name": "INA240 current-sense amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "INA293 current-sense amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "ACS724 current sensor",
+        "quantity": 5
+      },
+      {
+        "name": "ACS758 high-current sensor",
+        "quantity": 5
+      },
+      {
+        "name": "MAX17260 fuel gauge",
+        "quantity": 3
+      },
+      {
+        "name": "BQ27441 fuel gauge",
+        "quantity": 3
+      },
+      {
+        "name": "BQ76952 BMS development board",
+        "quantity": 2
+      },
+      {
+        "name": "Digital power monitor development board",
+        "quantity": 2
+      },
+      {
+        "name": "ADS1115",
+        "quantity": 10
+      },
+      {
+        "name": "ADS1220",
+        "quantity": 5
+      },
+      {
+        "name": "ADS124S08",
+        "quantity": 3
+      },
+      {
+        "name": "ADS1256",
+        "quantity": 3
+      },
+      {
+        "name": "ADS131M04",
+        "quantity": 3
+      },
+      {
+        "name": "ADS1292R",
+        "quantity": 2
+      },
+      {
+        "name": "MCP3564",
+        "quantity": 3
+      },
+      {
+        "name": "MCP4725",
+        "quantity": 5
+      },
+      {
+        "name": "AD5693R",
+        "quantity": 3
+      },
+      {
+        "name": "AD9833 signal generator module",
+        "quantity": 3
+      },
+      {
+        "name": "AD8232 analog front end",
+        "quantity": 3
+      },
+      {
+        "name": "Instrumentation amplifier module",
+        "quantity": 5
+      },
+      {
+        "name": "AD9361 SDR development board",
+        "quantity": 1
+      },
+      {
+        "name": "USRP B210",
+        "quantity": 1
+      },
+      {
+        "name": "PlutoSDR",
+        "quantity": 2
+      },
+      {
+        "name": "LimeSDR Mini",
+        "quantity": 1
+      },
+      {
+        "name": "LimeSDR-USB",
+        "quantity": 1
+      },
+      {
+        "name": "HackRF One",
+        "quantity": 1
+      },
+      {
+        "name": "RTL-SDR receiver",
+        "quantity": 3
+      },
+      {
+        "name": "ADALM-Pluto-compatible RF board",
+        "quantity": 2
+      },
+      {
+        "name": "SX1262 LoRa module",
+        "quantity": 5
+      },
+      {
+        "name": "LR1121 LoRa/FSK module",
+        "quantity": 3
+      },
+      {
+        "name": "CC1101 sub-GHz module",
+        "quantity": 5
+      },
+      {
+        "name": "nRF52840 development board",
+        "quantity": 3
+      },
+      {
+        "name": "CC2652P development board",
+        "quantity": 3
+      },
+      {
+        "name": "RF front-end development module",
+        "quantity": 2
+      },
+      {
+        "name": "RF power detector module",
+        "quantity": 3
+      },
+      {
+        "name": "RF attenuator kit",
+        "quantity": 0
+      },
+      {
+        "name": "SMA RF cable kit",
+        "quantity": 0
+      },
+      {
+        "name": "u-blox ZED-F9P RTK GNSS",
+        "quantity": 2
+      },
+      {
+        "name": "u-blox ZED-X20P GNSS",
+        "quantity": 1
+      },
+      {
+        "name": "u-blox NEO-M9N",
+        "quantity": 3
+      },
+      {
+        "name": "u-blox MAX-M10S",
+        "quantity": 3
+      },
+      {
+        "name": "Multi-band GNSS antenna",
+        "quantity": 5
+      },
+      {
+        "name": "RTK correction radio",
+        "quantity": 0
+      },
+      {
+        "name": "GNSS compass module",
+        "quantity": 2
+      },
+      {
+        "name": "GNSS timing module",
+        "quantity": 1
+      },
+      {
+        "name": "ODrive motor controller",
+        "quantity": 2
+      },
+      {
+        "name": "VESC motor controller",
+        "quantity": 2
+      },
+      {
+        "name": "SimpleFOC-compatible controller",
+        "quantity": 3
+      },
+      {
+        "name": "TMC2209",
+        "quantity": 5
+      },
+      {
+        "name": "TMC5160",
+        "quantity": 3
+      },
+      {
+        "name": "TMC4671 FOC controller",
+        "quantity": 2
+      },
+      {
+        "name": "CAN-based servo drive",
+        "quantity": 2
+      },
+      {
+        "name": "Closed-loop stepper driver",
+        "quantity": 3
+      },
+      {
+        "name": "Absolute magnetic encoder",
+        "quantity": 5
+      },
+      {
+        "name": "AS5048A",
+        "quantity": 5
+      },
+      {
+        "name": "AS5047P",
+        "quantity": 3
+      },
+      {
+        "name": "BLDC Hall sensor board",
+        "quantity": 5
+      },
+      {
+        "name": "24 V NPN inductive proximity sensor",
+        "quantity": 5
+      },
+      {
+        "name": "24 V PNP inductive proximity sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Industrial photoelectric sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Industrial capacitive sensor",
+        "quantity": 5
+      },
+      {
+        "name": "4–20 mA transmitter module",
+        "quantity": 5
+      },
+      {
+        "name": "4–20 mA receiver module",
+        "quantity": 5
+      },
+      {
+        "name": "0–10 V signal module",
+        "quantity": 5
+      },
+      {
+        "name": "Isolated RS485 interface",
+        "quantity": 5
+      },
+      {
+        "name": "Isolated CAN interface",
+        "quantity": 3
+      },
+      {
+        "name": "CAN-FD interface",
+        "quantity": 3
+      },
+      {
+        "name": "Modbus RTU gateway",
+        "quantity": 3
+      },
+      {
+        "name": "Modbus TCP gateway",
+        "quantity": 2
+      },
+      {
+        "name": "IO-Link master development module",
+        "quantity": 1
+      },
+      {
+        "name": "Industrial digital input module",
+        "quantity": 3
+      },
+      {
+        "name": "Industrial digital output module",
+        "quantity": 3
+      },
+      {
+        "name": "INMP441 I2S microphone",
+        "quantity": 10
+      },
+      {
+        "name": "ICS-43434 I2S microphone",
+        "quantity": 5
+      },
+      {
+        "name": "MEMS microphone array",
+        "quantity": 3
+      },
+      {
+        "name": "4-microphone array",
+        "quantity": 2
+      },
+      {
+        "name": "6-microphone array",
+        "quantity": 1
+      },
+      {
+        "name": "MAX98357A I2S amplifier",
+        "quantity": 5
+      },
+      {
+        "name": "PCM5102A DAC",
+        "quantity": 3
+      },
+      {
+        "name": "Audio DSP development board",
+        "quantity": 2
+      },
+      {
+        "name": "Ultrasonic microphone module",
+        "quantity": 2
+      },
+      {
+        "name": "ATECC608A secure element",
+        "quantity": 5
+      },
+      {
+        "name": "OPTIGA Trust M",
+        "quantity": 3
+      },
+      {
+        "name": "TPM 2.0 development module",
+        "quantity": 2
+      },
+      {
+        "name": "PN532 NFC module",
+        "quantity": 5
+      },
+      {
+        "name": "ST25R NFC reader",
+        "quantity": 2
+      },
+      {
+        "name": "UHF RFID reader module",
+        "quantity": 2
+      },
+      {
+        "name": "Fingerprint sensor",
+        "quantity": 5
+      },
+      {
+        "name": "Secure USB key / security token development kit",
+        "quantity": 2
+      },
+      {
+        "name": "W5500 Ethernet module",
+        "quantity": 5
+      },
+      {
+        "name": "LAN8720 Ethernet PHY board",
+        "quantity": 3
+      },
+      {
+        "name": "USB-C PD controller development board",
+        "quantity": 3
+      },
+      {
+        "name": "USB 2.0 hub module",
+        "quantity": 3
+      },
+      {
+        "name": "USB-C multiplexer module",
+        "quantity": 2
+      },
+      {
+        "name": "PCIe/NVMe adapter for SBC",
+        "quantity": 2
+      },
+      {
+        "name": "M.2 NVMe carrier board",
+        "quantity": 2
+      },
+      {
+        "name": "Cellular LTE Cat-4 module",
+        "quantity": 2
+      },
+      {
+        "name": "LTE Cat-1 module",
+        "quantity": 2
+      },
+      {
+        "name": "NB-IoT/LTE-M module",
+        "quantity": 2
+      },
+      {
+        "name": "GNSS + cellular combo module",
+        "quantity": 2
+      },
+      {
+        "name": "Radiation-tolerant MCU evaluation board",
+        "quantity": 1
+      },
+      {
+        "name": "High-reliability IMU module",
+        "quantity": 2
+      },
+      {
+        "name": "Magnetometer module",
+        "quantity": 3
+      },
+      {
+        "name": "Precision barometer",
+        "quantity": 2
+      },
+      {
+        "name": "GNSS receiver",
+        "quantity": 2
+      },
+      {
+        "name": "Solar-cell monitoring module",
+        "quantity": 3
+      },
+      {
+        "name": "Battery fuel-gauge module",
+        "quantity": 3
+      },
+      {
+        "name": "High-efficiency buck converter module",
+        "quantity": 5
+      },
+      {
+        "name": "Telemetry radio module",
+        "quantity": 0
+      },
+      {
+        "name": "LoRa long-range radio",
+        "quantity": 5
+      },
+      {
+        "name": "SDR transceiver board",
+        "quantity": 1
+      },
+      {
+        "name": "Thermal sensor array",
+        "quantity": 2
+      },
+      {
+        "name": "UV sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Radiation detector",
+        "quantity": 2
+      },
+      {
+        "name": "Spectral sensor",
+        "quantity": 2
+      },
+      {
+        "name": "Precision strain-gauge ADC module",
+        "quantity": 3
+      },
+      {
+        "name": "24-bit load-cell ADC",
+        "quantity": 5
+      },
+      {
+        "name": "Industrial pressure transducer interface",
+        "quantity": 3
+      },
+      {
+        "name": "Differential pressure sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Flow-meter pulse interface",
+        "quantity": 5
+      },
+      {
+        "name": "Capacitive liquid-level sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Optical dust sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Soil EC sensor",
+        "quantity": 3
+      },
+      {
+        "name": "Precision soil-moisture sensor",
+        "quantity": 5
+      },
+      {
+        "name": "PAR light sensor",
+        "quantity": 2
+      },
+      {
+        "name": "Chlorophyll / optical plant sensor",
+        "quantity": 1
+      },
+      {
+        "name": "Turbidity sensor",
+        "quantity": 5
+      },
+      {
+        "name": "ORP sensor interface",
+        "quantity": 2
+      },
+      {
+        "name": "Dissolved-oxygen sensor interface",
+        "quantity": 2
+      },
+      {
+        "name": "Electrochemical sensor AFE",
+        "quantity": 2
+      },
+      {
+        "name": "STM32H743 Nucleo-144",
+        "quantity": 2
+      },
+      {
+        "name": "NVIDIA Jetson Orin Nano Super",
+        "quantity": 2
+      },
+      {
+        "name": "Sony IMX477 12.3MP Camera",
+        "quantity": 2
+      },
+      {
+        "name": "AD9361 SDR development board",
+        "quantity": 1
+      },
+      {
+        "name": "USRP B210",
+        "quantity": 1
+      },
+      {
+        "name": "GUVA-S12SD UV sensor",
+        "quantity": 5
+      },
+      {
+        "name": "MMC5983MA magnetometer",
+        "quantity": 5
+      },
+      {
+        "name": "AS3935 lightning sensor",
+        "quantity": 3
+      },
+      {
+        "name": "AS7262 spectral sensor",
+        "quantity": 3
+      },
+      {
+        "name": "AMG8833 thermal sensor",
+        "quantity": 3
+      },
+      {
+        "name": "BME680 environmental sensor",
+        "quantity": 5
+      },
+      {
+        "name": "MLX90614 IR temperature sensor",
+        "quantity": 5
+      },
+      {
+        "name": "DFRobot Geiger counter",
+        "quantity": 2
+      },
+      {
+        "name": "MPU-6050 IMU",
+        "quantity": 0
+      },
+      {
+        "name": "INA219 power monitor",
+        "quantity": 0
+      },
+      {
+        "name": "DS18B20 temperature sensor",
+        "quantity": 0
+      }
+    ]
+  }
+]

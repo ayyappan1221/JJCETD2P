@@ -13,9 +13,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid secret" }, { status: 403 });
     }
 
-    // Read components data
-    const dataPath = path.join(process.cwd(), "data", "components_data.json");
-    if (!fs.existsSync(dataPath)) {
+    // Read components data (try data/ then project root)
+    const candidates = [
+      path.join(process.cwd(), "data", "components_data.json"),
+      path.join(process.cwd(), "components_data.json"),
+    ];
+    const dataPath = candidates.find((p) => fs.existsSync(p));
+    if (!dataPath) {
       return NextResponse.json({ error: "components_data.json not found" }, { status: 404 });
     }
 

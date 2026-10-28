@@ -47,5 +47,4 @@ next-env.d.ts
 .omo/
 .codegraph/
 *.docx
-components_data.json
 parse_docx.py
