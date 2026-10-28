@@ -6,6 +6,7 @@ import { requireRole } from "@/lib/auth/rbac";
 import { auth } from "@/lib/auth/config";
 import { createAuditLog } from "@/services/audit";
 import { createNotification } from "@/services/notifications";
+import { sendEmail, isEmailConfigured } from "@/lib/email";
 import { z } from "zod";
 
 const approvalSchema = z.object({
@@ -57,7 +58,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       .where(eq(borrowingRequests.id, id))
       .returning();
 
-    // Notify student
+    // Notify student (in-app)
     await createNotification({
       recipientId: (request as any).studentId,
       type: parsed.action === "approve" ? "REQUEST_APPROVED" : "REQUEST_REJECTED",
@@ -70,6 +71,23 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       relatedEntityId: id,
       dedupeKey: `request_${parsed.action}d_${id}`,
     });
+
+    // Email notification (if configured)
+    if (isEmailConfigured() && (request as any).student?.email) {
+      const studentEmail = (request as any).student.email;
+      const compName = (request as any).component?.name || "component";
+      if (parsed.action === "approve") {
+        await sendEmail(studentEmail, "Borrowing Request Approved — JJCETD2P",
+          `<p>Dear ${(request as any).student.fullName},</p>
+           <p>Your request for <strong>${compName}</strong> has been approved.</p>
+           <p>Please collect the component from the D2P Lab.</p>`);
+      } else {
+        await sendEmail(studentEmail, "Borrowing Request Rejected — JJCETD2P",
+          `<p>Dear ${(request as any).student.fullName},</p>
+           <p>Your request for <strong>${compName}</strong> was rejected.</p>
+           <p>Reason: ${parsed.rejectionReason || "N/A"}</p>`);
+      }
+    }
 
     await createAuditLog({
       actorId: (session!.user as any).id,
