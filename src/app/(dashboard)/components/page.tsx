@@ -200,6 +200,12 @@ export default function ComponentsPage() {
                 </div>
                 <div><Label>Storage Location</Label><Input value={form.storageLocation} onChange={(e) => setForm({ ...form, storageLocation: e.target.value })} /></div>
                 <div><Label>Image URL</Label><Input value={form.imageUrl} onChange={(e) => setForm({ ...form, imageUrl: e.target.value })} placeholder="https://..." /></div>
+                {form.imageUrl && (
+                  <div className="flex items-center gap-3 rounded-md border bg-slate-50 p-2 dark:bg-slate-800/50">
+                    <img src={form.imageUrl} alt="Component preview" className="h-16 w-16 rounded object-contain bg-white" />
+                    <p className="text-xs text-muted-foreground break-all">{form.imageUrl}</p>
+                  </div>
+                )}
                 {canManage && editingComponent && (
                   <div>
                     <Label>Upload Image (JPG/PNG/WebP, max 5MB)</Label>
@@ -243,7 +249,7 @@ export default function ComponentsPage() {
             <Card key={comp.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="aspect-square bg-slate-100 flex items-center justify-center overflow-hidden">
                 {comp.imageUrl ? (
-                  <img src={comp.imageUrl} alt={comp.name} className="w-full h-full object-cover" />
+                  <img src={comp.imageUrl} alt={comp.name} className="w-full h-full object-contain p-2" />
                 ) : (
                   <Package className="h-16 w-16 text-slate-300" />
                 )}
