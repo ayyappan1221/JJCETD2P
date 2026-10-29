@@ -106,21 +106,18 @@ export default function ComponentsPage() {
     setSubmitting(true);
     const cartId = crypto.randomUUID();
     try {
-      for (const item of cart) {
-        const res = await fetch("/api/v1/borrowing-requests", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            componentId: item.id,
-            quantity: item.qty,
-            purpose: "Component request from inventory",
-            requestedReturnDate: new Date(returnDate).toISOString(),
-            cartId,
-          }),
-        });
-        if (!res.ok) { const e = await res.json(); throw new Error(e.error || "Failed"); }
-      }
-      toast.success("Requests submitted for approval");
+      const res = await fetch("/api/v1/borrowing-requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: cart.map((item) => ({ componentId: item.id, quantity: item.qty })),
+          purpose: "Component request from inventory",
+          requestedReturnDate: new Date(returnDate).toISOString(),
+          cartId,
+        }),
+      });
+      if (!res.ok) { const e = await res.json(); throw new Error(e.error || "Failed"); }
+      toast.success("Request submitted for approval");
       setCart([]);
       setCartOpen(false);
       setReturnDate("");
@@ -140,6 +137,21 @@ export default function ComponentsPage() {
       imageUrl: comp.imageUrl || "",
     });
     setDialogOpen(true);
+  };
+
+  const handleImageUpload = async (compId: string, file: File) => {
+    const fd = new FormData();
+    fd.append("image", file);
+    try {
+      const res = await fetch(`/api/v1/components/${compId}/image`, { method: "POST", body: fd });
+      if (!res.ok) { const e = await res.json(); throw new Error(e.error || "Upload failed"); }
+      const data = await res.json();
+      queryClient.invalidateQueries({ queryKey: ["components"] });
+      if (editingComponent?.id === compId) setForm((f) => ({ ...f, imageUrl: data.imageUrl }));
+      toast.success("Image uploaded");
+    } catch (e: any) {
+      toast.error(e.message);
+    }
   };
 
   const handleSubmit = () => {
@@ -188,6 +200,15 @@ export default function ComponentsPage() {
                 </div>
                 <div><Label>Storage Location</Label><Input value={form.storageLocation} onChange={(e) => setForm({ ...form, storageLocation: e.target.value })} /></div>
                 <div><Label>Image URL</Label><Input value={form.imageUrl} onChange={(e) => setForm({ ...form, imageUrl: e.target.value })} placeholder="https://..." /></div>
+                {canManage && editingComponent && (
+                  <div>
+                    <Label>Upload Image (JPG/PNG/WebP, max 5MB)</Label>
+                    <Input type="file" accept="image/jpeg,image/jpg,image/png,image/webp" onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) handleImageUpload(editingComponent.id, f);
+                    }} />
+                  </div>
+                )}
                 <Button onClick={handleSubmit} className="w-full" disabled={createMutation.isPending || updateMutation.isPending}>{editingComponent ? "Update" : "Create"}</Button>
               </div>
             </DialogContent>

@@ -93,10 +93,10 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const requestId = body.requestId;
 
-    // Fetch and validate the approved request
+    // Fetch and validate the approved request (with items)
     const request = await db.query.borrowingRequests.findFirst({
       where: eq(borrowingRequests.id, requestId),
-      with: { student: true, component: true },
+      with: { student: true, component: true, items: { with: { component: true } } },
     });
 
     if (!request) {
@@ -110,55 +110,63 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const component = (request as any).component;
-    const quantity = (request as any).quantity;
+    // Determine items to issue
+    const itemsToIssue: { componentId: string; component: any; quantity: number }[] =
+      (request as any).items && (request as any).items.length > 0
+        ? (request as any).items.map((it: any) => ({ componentId: it.componentId, component: it.component, quantity: it.quantity }))
+        : [{ componentId: (request as any).componentId, component: (request as any).component, quantity: (request as any).quantity }];
 
-    // Atomic transaction: check stock, decrement, create issue record, create movement, update request
-    const result = await db.transaction(async (tx) => {
-      // Atomic conditional update: decrement available, increment issued
-      const updateResult = await tx
-        .update(components)
-        .set({
-          availableQuantity: sql`${components.availableQuantity} - ${quantity}`,
-          issuedQuantity: sql`${components.issuedQuantity} + ${quantity}`,
-          updatedAt: new Date(),
-        })
-        .where(
-          sql`${components.id} = ${component.id} AND ${components.availableQuantity} >= ${quantity} AND ${components.isActive} = true`
-        )
-        .returning();
+    // Atomic transaction: check stock, decrement, create issue records, create movements, update request
+    const results = await db.transaction(async (tx) => {
+      const issued: any[] = [];
+      for (const it of itemsToIssue) {
+        const component = it.component;
+        const quantity = it.quantity;
 
-      if (updateResult.length === 0) {
-        throw new Error("INSUFFICIENT_STOCK");
-      }
+        const updateResult = await tx
+          .update(components)
+          .set({
+            availableQuantity: sql`${components.availableQuantity} - ${quantity}`,
+            issuedQuantity: sql`${components.issuedQuantity} + ${quantity}`,
+            updatedAt: new Date(),
+          })
+          .where(
+            sql`${components.id} = ${component.id} AND ${components.availableQuantity} >= ${quantity} AND ${components.isActive} = true`
+          )
+          .returning();
 
-      // Create issue record
-      const issueRef = generateReference("IS");
-      const [issue] = await tx
-        .insert(issueRecords)
-        .values({
-          reference: issueRef,
-          requestId,
-          studentId: (request as any).studentId,
+        if (updateResult.length === 0) {
+          throw new Error("INSUFFICIENT_STOCK");
+        }
+
+        const issueRef = generateReference("IS");
+        const [issue] = await tx
+          .insert(issueRecords)
+          .values({
+            reference: issueRef,
+            requestId,
+            studentId: (request as any).studentId,
+            componentId: component.id,
+            quantityIssued: quantity,
+            issuedById: (session!.user as any).id,
+            expectedReturnDate: (request as any).requestedReturnDate,
+            status: "ACTIVE",
+          })
+          .returning();
+
+        const movementRef = generateReference("SM");
+        await tx.insert(stockMovements).values({
+          reference: movementRef,
           componentId: component.id,
-          quantityIssued: quantity,
-          issuedById: (session!.user as any).id,
-          expectedReturnDate: (request as any).requestedReturnDate,
-          status: "ACTIVE",
-        })
-        .returning();
+          type: "ISSUE",
+          quantityDelta: -quantity,
+          reason: `Issued for request ${(request as any).reference}`,
+          performedById: (session!.user as any).id,
+          relatedIssueId: issue.id,
+        });
 
-      // Create stock movement
-      const movementRef = generateReference("SM");
-      await tx.insert(stockMovements).values({
-        reference: movementRef,
-        componentId: component.id,
-        type: "ISSUE",
-        quantityDelta: -quantity,
-        reason: `Issued for request ${(request as any).reference}`,
-        performedById: (session!.user as any).id,
-        relatedIssueId: issue.id,
-      });
+        issued.push({ issue, component, quantity });
+      }
 
       // Update request status to ISSUED
       await tx
@@ -166,29 +174,30 @@ export async function POST(req: NextRequest) {
         .set({ status: "ISSUED", updatedAt: new Date() })
         .where(eq(borrowingRequests.id, requestId));
 
-      return issue;
+      return issued;
     });
 
-    // Notify student
+    // Notify student (one notification for all items)
+    const itemsSummary = itemsToIssue.map((it) => `${it.quantity}x ${it.component.name}`).join(", ");
     await createNotification({
       recipientId: (request as any).studentId,
       type: "COMPONENT_ISSUED",
-      title: "Component Issued",
-      message: `${quantity}x ${component.name} has been issued. Return by ${new Date((request as any).requestedReturnDate).toLocaleDateString()}`,
-      relatedEntityType: "issue_record",
-      relatedEntityId: result.id,
-      dedupeKey: `component_issued_${result.id}`,
+      title: "Components Issued",
+      message: `${itemsSummary} has been issued. Return by ${new Date((request as any).requestedReturnDate).toLocaleDateString()}`,
+      relatedEntityType: "borrowing_request",
+      relatedEntityId: requestId,
+      dedupeKey: `component_issued_${requestId}`,
     });
 
     await createAuditLog({
       actorId: (session!.user as any).id,
-      action: "COMPONENT_ISSUED",
-      entityType: "issue_record",
-      entityId: result.id,
-      after: result,
+      action: "COMPONENTS_ISSUED",
+      entityType: "borrowing_request",
+      entityId: requestId,
+      after: { issueCount: results.length },
     });
 
-    return NextResponse.json(result, { status: 201 });
+    return NextResponse.json({ issued: results.length, issues: results.map((r) => r.issue) }, { status: 201 });
   } catch (err: any) {
     if (err.message === "INSUFFICIENT_STOCK") {
       return NextResponse.json({ error: "Insufficient stock available" }, { status: 409 });

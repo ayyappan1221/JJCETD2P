@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,19 @@ export default function UsersPage() {
   const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [detailUser, setDetailUser] = useState<any>(null);
+  const [history, setHistory] = useState<any[]>([]);
+  const [historyLoading, setHistoryLoading] = useState(false);
+
+  useEffect(() => {
+    if (!detailUser) { setHistory([]); return; }
+    setHistoryLoading(true);
+    fetch(`/api/v1/borrowing-requests?studentId=${detailUser.id}&pageSize=50`)
+      .then((r) => r.json())
+      .then((d) => setHistory(d?.data || []))
+      .catch(() => setHistory([]))
+      .finally(() => setHistoryLoading(false));
+  }, [detailUser]);
   const [form, setForm] = useState({
     email: "", password: "", fullName: "", rollNumber: "", department: "", roles: ["STUDENT"] as string[],
   });
@@ -82,6 +95,7 @@ export default function UsersPage() {
                 <TableHead>Email</TableHead>
                 <TableHead>Roles</TableHead>
                 <TableHead>Department</TableHead>
+                <TableHead>Register No.</TableHead>
                 <TableHead>Status</TableHead>
               </TableRow>
             </TableHeader>
@@ -92,7 +106,7 @@ export default function UsersPage() {
                 <TableRow><TableCell colSpan={5} className="text-center py-8 text-muted-foreground">No users</TableCell></TableRow>
               ) : (
                 (data?.data || []).map((u: any) => (
-                  <TableRow key={u.id}>
+                  <TableRow key={u.id} className="cursor-pointer hover:bg-slate-50" onClick={() => setDetailUser(u)}>
                     <TableCell className="font-medium">{u.fullName}</TableCell>
                     <TableCell>{u.email}</TableCell>
                     <TableCell>
@@ -103,6 +117,7 @@ export default function UsersPage() {
                       </div>
                     </TableCell>
                     <TableCell>{u.department || "-"}</TableCell>
+                    <TableCell>{u.registerNumber || "-"}</TableCell>
                     <TableCell><Badge variant={u.isActive ? "default" : "secondary"}>{u.isActive ? "Active" : "Inactive"}</Badge></TableCell>
                   </TableRow>
                 ))
@@ -136,6 +151,60 @@ export default function UsersPage() {
             </div>
             <Button onClick={() => createMutation.mutate(form)} className="w-full" disabled={createMutation.isPending}>Create User</Button>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Student Detail Dialog */}
+      <Dialog open={!!detailUser} onOpenChange={() => setDetailUser(null)}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-auto">
+          <DialogHeader><DialogTitle>{detailUser?.fullName} — Details</DialogTitle></DialogHeader>
+          {detailUser && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <div><span className="text-muted-foreground">Name:</span> {detailUser.fullName}</div>
+                <div><span className="text-muted-foreground">Email:</span> {detailUser.email}</div>
+                <div><span className="text-muted-foreground">Register No:</span> {detailUser.registerNumber || "-"}</div>
+                <div><span className="text-muted-foreground">SPR No:</span> {detailUser.sprNumber || "-"}</div>
+                <div><span className="text-muted-foreground">Mobile:</span> {detailUser.mobileNumber || "-"}</div>
+                <div><span className="text-muted-foreground">Department:</span> {detailUser.department || "-"}</div>
+                <div><span className="text-muted-foreground">Section:</span> {detailUser.section || "-"}</div>
+                <div><span className="text-muted-foreground">Academic Year:</span> {detailUser.academicYear || "-"}</div>
+                <div><span className="text-muted-foreground">Roles:</span> {(detailUser.roles || []).join(", ")}</div>
+                <div><span className="text-muted-foreground">Status:</span> {detailUser.isActive ? "Active" : "Inactive"}</div>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">Borrowing History</h3>
+                {historyLoading ? (
+                  <p className="text-sm text-muted-foreground">Loading...</p>
+                ) : history.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">No borrowing requests</p>
+                ) : (
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Reference</TableHead>
+                        <TableHead>Component</TableHead>
+                        <TableHead>Qty</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Return Date</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {history.map((r: any) => (
+                        <TableRow key={r.id}>
+                          <TableCell className="font-mono text-xs">{r.reference}</TableCell>
+                          <TableCell className="text-sm">{r.componentName}</TableCell>
+                          <TableCell>{r.quantity}</TableCell>
+                          <TableCell><Badge variant="outline" className="text-xs">{r.status}</Badge></TableCell>
+                          <TableCell className="text-xs">{new Date(r.requestedReturnDate).toLocaleDateString()}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                )}
+              </div>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </div>

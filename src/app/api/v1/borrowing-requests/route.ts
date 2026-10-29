@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { borrowingRequests, components, profiles } from "@/lib/db/schema";
+import { borrowingRequests, borrowingRequestItems, components, profiles } from "@/lib/db/schema";
 import { eq, and, ilike, sql, desc } from "drizzle-orm";
 import { requireRole, requireAuth } from "@/lib/auth/rbac";
 import { auth } from "@/lib/auth/config";
@@ -11,11 +11,17 @@ import { z } from "zod";
 import { generateReference } from "@/lib/utils";
 
 const createSchema = z.object({
-  componentId: z.string().uuid(),
-  quantity: z.number().int().positive(),
+  componentId: z.string().uuid().optional(),
+  quantity: z.number().int().positive().optional(),
+  items: z.array(z.object({
+    componentId: z.string().uuid(),
+    quantity: z.number().int().positive(),
+  })).optional(),
   purpose: z.string().optional(),
   requestedReturnDate: z.string().datetime(),
   cartId: z.string().uuid().optional(),
+}).refine((d) => d.items?.length || (d.componentId && d.quantity), {
+  message: "Provide either items array or componentId+quantity",
 });
 
 export async function GET(req: NextRequest) {
@@ -52,6 +58,7 @@ export async function GET(req: NextRequest) {
       student: true,
       component: true,
       decisionBy: true,
+      items: { with: { component: true } },
     },
     limit: pageSize,
     offset,
@@ -64,26 +71,38 @@ export async function GET(req: NextRequest) {
     .where(where);
   const total = Number(countResult[0]?.count || 0);
 
-  const mapped = data.map((r: any) => ({
-    id: r.id,
-    reference: r.reference,
-    cartId: r.cartId,
-    studentId: r.studentId,
-    studentName: r.student?.fullName,
-    componentId: r.componentId,
-    componentName: r.component?.name,
-    componentCode: r.component?.code,
-    quantity: r.quantity,
-    purpose: r.purpose,
-    requestedReturnDate: r.requestedReturnDate,
-    status: r.status,
-    decisionById: r.decisionById,
-    decisionByName: r.decisionBy?.fullName,
-    decisionAt: r.decisionAt,
-    rejectionReason: r.rejectionReason,
-    createdAt: r.createdAt,
-    updatedAt: r.updatedAt,
-  }));
+  const mapped = data.map((r: any) => {
+    const items = (r.items && r.items.length > 0)
+      ? r.items.map((it: any) => ({
+          id: it.id,
+          componentId: it.componentId,
+          componentName: it.component?.name,
+          componentCode: it.component?.code,
+          quantity: it.quantity,
+        }))
+      : (r.componentId ? [{ id: null, componentId: r.componentId, componentName: r.component?.name, componentCode: r.component?.code, quantity: r.quantity }] : []);
+    return {
+      id: r.id,
+      reference: r.reference,
+      cartId: r.cartId,
+      studentId: r.studentId,
+      studentName: r.student?.fullName,
+      componentId: r.componentId,
+      componentName: items.length === 1 ? items[0].componentName : `${items.length} items`,
+      componentCode: items.length === 1 ? items[0].componentCode : null,
+      quantity: items.length === 1 ? items[0].quantity : items.reduce((s: number, it: any) => s + it.quantity, 0),
+      items,
+      purpose: r.purpose,
+      requestedReturnDate: r.requestedReturnDate,
+      status: r.status,
+      decisionById: r.decisionById,
+      decisionByName: r.decisionBy?.fullName,
+      decisionAt: r.decisionAt,
+      rejectionReason: r.rejectionReason,
+      createdAt: r.createdAt,
+      updatedAt: r.updatedAt,
+    };
+  });
 
   return NextResponse.json({
     data: mapped,
@@ -104,12 +123,20 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const parsed = createSchema.parse(body);
 
-    // Validate component exists and is active
-    const component = await db.query.components.findFirst({
-      where: eq(components.id, parsed.componentId),
-    });
-    if (!component || !component.isActive) {
-      return NextResponse.json({ error: "Component not found or inactive" }, { status: 404 });
+    const items = parsed.items && parsed.items.length > 0
+      ? parsed.items
+      : [{ componentId: parsed.componentId!, quantity: parsed.quantity! }];
+
+    // Validate all components exist and are active
+    const componentsList: any[] = [];
+    for (const it of items) {
+      const component = await db.query.components.findFirst({
+        where: eq(components.id, it.componentId),
+      });
+      if (!component || !component.isActive) {
+        return NextResponse.json({ error: `Component not found or inactive: ${it.componentId}` }, { status: 404 });
+      }
+      componentsList.push({ ...it, component });
     }
 
     // Validate return date is in the future
@@ -126,13 +153,22 @@ export async function POST(req: NextRequest) {
         reference,
         cartId: parsed.cartId || null,
         studentId: (session.user as any).id,
-        componentId: parsed.componentId,
-        quantity: parsed.quantity,
+        componentId: items.length === 1 ? items[0].componentId : null,
+        quantity: items.length === 1 ? items[0].quantity : null,
         purpose: parsed.purpose || null,
         requestedReturnDate: returnDate,
         status: "PENDING",
       })
       .returning();
+
+    // Insert line items
+    await db.insert(borrowingRequestItems).values(
+      items.map((it) => ({
+        requestId: request.id,
+        componentId: it.componentId,
+        quantity: it.quantity,
+      }))
+    );
 
     // Notify staff about new request
     const staffUsers = await db.query.profiles.findMany({
@@ -142,12 +178,14 @@ export async function POST(req: NextRequest) {
       u.roles?.some((r: any) => ["ADMIN", "D2P_INCHARGE"].includes(r.role))
     );
 
+    const itemsSummary = componentsList.map((c) => `${c.quantity}x ${c.component.name}`).join(", ");
+
     for (const staff of staffWithRoles) {
       await createNotification({
         recipientId: staff.id,
         type: "REQUEST_SUBMITTED",
         title: "New Borrowing Request",
-        message: `${session.user.name} requested ${parsed.quantity}x ${component.name}`,
+        message: `${session.user.name} requested: ${itemsSummary}`,
         relatedEntityType: "borrowing_request",
         relatedEntityId: request.id,
         dedupeKey: `request_submitted_${request.id}_${staff.id}`,
@@ -155,14 +193,17 @@ export async function POST(req: NextRequest) {
 
       // Email notification to staff/incharge (if configured)
       if (isEmailConfigured() && staff.email) {
+        const itemsHtml = componentsList.map((c) => `<li>${c.quantity}x ${c.component.name} (${c.component.code})</li>`).join("");
         await sendEmail(
           staff.email,
           "New Component Request — JJCETD2P",
           `<p>Dear ${staff.fullName},</p>
-           <p><strong>${session.user.name}</strong> has requested <strong>${parsed.quantity}x ${component.name}</strong>.</p>
+           <p><strong>${session.user.name}</strong> has submitted a borrowing request with the following items:</p>
+           <ul>${itemsHtml}</ul>
            <p>Purpose: ${parsed.purpose || "N/A"}</p>
            <p>Expected return: ${new Date(parsed.requestedReturnDate).toLocaleDateString()}</p>
-           <p>Please review and approve/reject in the D2P Lab system.</p>`
+           <p>Please review and approve/reject in the D2P Lab system.</p>
+           <p><a href="${process.env.NEXTAUTH_URL || "http://localhost:3000"}/approvals" style="display:inline-block;padding:10px 20px;background:#2563eb;color:#fff;text-decoration:none;border-radius:6px;">Review Request</a></p>`
         );
       }
     }

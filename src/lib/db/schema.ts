@@ -128,7 +128,7 @@ export const components = pgTable(
     availableQuantity: integer("available_quantity").notNull().default(0),
     issuedQuantity: integer("issued_quantity").notNull().default(0),
     storageLocation: varchar("storage_location", { length: 100 }),
-    imageUrl: varchar("image_url", { length: 500 }),
+    imageUrl: text("image_url"),
     minStockThreshold: integer("min_stock_threshold").notNull().default(0),
     isActive: boolean("is_active").notNull().default(true),
     createdAt: timestamp("created_at", { withTimezone: true })
@@ -155,10 +155,8 @@ export const borrowingRequests = pgTable(
     studentId: uuid("student_id")
       .notNull()
       .references(() => profiles.id, { onDelete: "cascade" }),
-    componentId: uuid("component_id")
-      .notNull()
-      .references(() => components.id, { onDelete: "restrict" }),
-    quantity: integer("quantity").notNull(),
+    componentId: uuid("component_id").references(() => components.id, { onDelete: "restrict" }),
+    quantity: integer("quantity"),
     purpose: text("purpose"),
     requestedReturnDate: timestamp("requested_return_date", {
       withTimezone: true,
@@ -184,6 +182,28 @@ export const borrowingRequests = pgTable(
   ]
 );
 
+// ─── Borrowing Request Items (one request -> many components) ──
+export const borrowingRequestItems = pgTable(
+  "borrowing_request_items",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    requestId: uuid("request_id")
+      .notNull()
+      .references(() => borrowingRequests.id, { onDelete: "cascade" }),
+    componentId: uuid("component_id")
+      .notNull()
+      .references(() => components.id, { onDelete: "restrict" }),
+    quantity: integer("quantity").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    index("bri_request_id_idx").on(t.requestId),
+    index("bri_component_id_idx").on(t.componentId),
+  ]
+);
+
 // ─── Issue Records ───────────────────────────────────────
 export const issueRecords = pgTable(
   "issue_records",
@@ -192,7 +212,6 @@ export const issueRecords = pgTable(
     reference: varchar("reference", { length: 30 }).notNull().unique(),
     requestId: uuid("request_id")
       .notNull()
-      .unique()
       .references(() => borrowingRequests.id, { onDelete: "restrict" }),
     studentId: uuid("student_id")
       .notNull()
