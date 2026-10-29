@@ -6,7 +6,7 @@ import { requireRole } from "@/lib/auth/rbac";
 import { createAuditLog } from "@/services/audit";
 
 const ALLOWED_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+const MAX_SIZE = 5 * 1024 * 1024; // 5MB (v2)
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { session, error } = await requireRole("ADMIN", "D2P_INCHARGE");
