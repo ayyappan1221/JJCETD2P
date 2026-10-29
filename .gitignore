@@ -51,3 +51,9 @@ parse_docx.py
 .vercel
 .env*
 !.env.example
+
+# local scratch artifacts
+.playwright-mcp/
+_*.log
+_*.mjs
+_*.json
