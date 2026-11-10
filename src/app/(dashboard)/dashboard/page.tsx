@@ -1,8 +1,9 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Package, ShoppingCart, ArrowRightLeft, AlertTriangle, Clock, TrendingDown, CheckCircle2, Cpu, Wifi, Activity } from "lucide-react";
+import { Package, ShoppingCart, ArrowRightLeft, AlertTriangle, Clock, TrendingDown, CheckCircle2, Cpu, Activity } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 async function fetchDashboard() {
@@ -12,6 +13,10 @@ async function fetchDashboard() {
 }
 
 export default function DashboardPage() {
+  const { data: session } = useSession();
+  const roles = (session?.user as any)?.roles || [];
+  const isAdmin = roles.includes("ADMIN");
+
   const { data, isLoading } = useQuery({ queryKey: ["dashboard"], queryFn: fetchDashboard });
 
   if (isLoading) {
@@ -36,11 +41,20 @@ export default function DashboardPage() {
     { label: "Low Stock Alerts", value: data?.lowStockComponents || 0, icon: TrendingDown, gradient: "from-red-600 to-pink-600", bg: "bg-red-50" },
   ];
 
+  const cardCls = isAdmin
+    ? "border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-[6px_6px_0_0_#000] hover:-translate-y-1 transition-all bg-white"
+    : "border-0 shadow-md hover:shadow-lg transition-shadow";
+  const titleCls = isAdmin
+    ? "text-3xl font-[family-name:var(--font-bangers)] tracking-wider text-slate-900 drop-shadow-[2px_2px_0_#fbbf24]"
+    : "text-2xl font-bold text-slate-900 dark:text-white";
+  const iconCls = isAdmin ? "shadow-[3px_3px_0_0_#000] border-2 border-black" : "shadow-lg";
+  const numCls = isAdmin ? "font-[family-name:var(--font-bangers)]" : "font-bold";
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-[family-name:var(--font-bangers)] tracking-wider text-slate-900 drop-shadow-[2px_2px_0_#fbbf24]">Dashboard</h1>
+          <h1 className={titleCls}>Dashboard</h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">IoT Lab Operations Overview</p>
         </div>
         <div className="flex items-center gap-2 text-xs text-slate-400">
@@ -53,14 +67,14 @@ export default function DashboardPage() {
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-<Card key={stat.label} className="border-4 border-black shadow-[4px_4px_0_0_#000] hover:shadow-[6px_6px_0_0_#000] hover:-translate-y-1 transition-all bg-white">
+            <Card key={stat.label} className={cardCls}>
               <CardContent className="p-5">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs font-bold text-slate-700 uppercase tracking-wide">{stat.label}</p>
-                    <p className="text-3xl font-[family-name:var(--font-bangers)] mt-1 text-slate-900">{stat.value}</p>
+                    <p className={`text-3xl mt-1 text-slate-900 ${numCls}`}>{stat.value}</p>
                   </div>
-                  <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-[3px_3px_0_0_#000] border-2 border-black`}>
+                  <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center ${iconCls}`}>
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
@@ -70,8 +84,7 @@ export default function DashboardPage() {
         })}
       </div>
 
-      {/* Recent Activity */}
-      <Card className="border-4 border-black shadow-[4px_4px_0_0_#000] bg-white">
+      <Card className={cardCls}>
         <CardHeader className="pb-3">
           <CardTitle className="text-lg flex items-center gap-2">
             <Cpu className="h-5 w-5 text-blue-600" />
