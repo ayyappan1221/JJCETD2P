@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
@@ -72,139 +71,141 @@ export default function ApprovalsPage() {
     ));
   };
 
+  const pendingRows = pendingLoading ? (
+    <TableRow><TableCell colSpan={6} className="text-center py-8">Loading...</TableCell></TableRow>
+  ) : (pendingData?.data || []).length === 0 ? (
+    <TableRow><TableCell colSpan={6} className="text-center py-8 text-muted-foreground">No pending requests</TableCell></TableRow>
+  ) : (
+    (pendingData?.data || []).map((r: any) => (
+      <TableRow key={r.id}>
+        <TableCell className="font-mono text-sm">{r.reference}</TableCell>
+        <TableCell>{r.studentName}</TableCell>
+        <TableCell>{renderItems(r)}</TableCell>
+        <TableCell className="text-sm">{r.purpose || "-"}</TableCell>
+        <TableCell className="text-sm">{new Date(r.requestedReturnDate).toLocaleDateString()}</TableCell>
+        <TableCell className="text-right space-x-2">
+          <Button size="sm" onClick={() => approveMutation.mutate(r.id)}>
+            <CheckCircle className="h-4 w-4 mr-1" /> Approve
+          </Button>
+          <Button size="sm" variant="destructive" onClick={() => setRejectDialog(r)}>
+            <XCircle className="h-4 w-4 mr-1" /> Reject
+          </Button>
+        </TableCell>
+      </TableRow>
+    ))
+  );
+
+  const approvedRows = approvedLoading ? (
+    <TableRow><TableCell colSpan={6} className="text-center py-8">Loading...</TableCell></TableRow>
+  ) : (approvedData?.data || []).length === 0 ? (
+    <TableRow><TableCell colSpan={6} className="text-center py-8 text-muted-foreground">No approved requests awaiting issue</TableCell></TableRow>
+  ) : (
+    (approvedData?.data || []).map((r: any) => (
+      <TableRow key={r.id}>
+        <TableCell className="font-mono text-sm">{r.reference}</TableCell>
+        <TableCell>{r.studentName}</TableCell>
+        <TableCell>{renderItems(r)}</TableCell>
+        <TableCell className="text-sm">{r.purpose || "-"}</TableCell>
+        <TableCell className="text-sm">{new Date(r.requestedReturnDate).toLocaleDateString()}</TableCell>
+        <TableCell className="text-right">
+          <Button size="sm" onClick={() => issueMutation.mutate(r.id)}>
+            <Package className="h-4 w-4 mr-1" /> Issue Components
+          </Button>
+        </TableCell>
+      </TableRow>
+    ))
+  );
+
+  const issuedRows = issuedLoading ? (
+    <TableRow><TableCell colSpan={5} className="text-center py-8">Loading...</TableCell></TableRow>
+  ) : (issuedData?.data || []).length === 0 ? (
+    <TableRow><TableCell colSpan={5} className="text-center py-8 text-muted-foreground">No issued items</TableCell></TableRow>
+  ) : (
+    (issuedData?.data || []).map((r: any) => (
+      <TableRow key={r.id}>
+        <TableCell className="font-mono text-sm">{r.reference}</TableCell>
+        <TableCell>{r.studentName}</TableCell>
+        <TableCell>{renderItems(r)}</TableCell>
+        <TableCell className="text-sm">{new Date(r.createdAt).toLocaleDateString()}</TableCell>
+        <TableCell><Badge variant="outline">{r.status}</Badge></TableCell>
+      </TableRow>
+    ))
+  );
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <h1 className="text-2xl font-bold">Approval Queue</h1>
-      <Tabs defaultValue="pending">
-        <TabsList>
-          <TabsTrigger value="pending">Pending ({(pendingData?.data || []).length})</TabsTrigger>
-          <TabsTrigger value="approved">Approved ({(approvedData?.data || []).length})</TabsTrigger>
-          <TabsTrigger value="issued">Issued ({(issuedData?.data || []).length})</TabsTrigger>
-        </TabsList>
 
-        {/* Pending */}
-        <TabsContent value="pending">
-          <Card>
-            <CardContent className="p-0">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Reference</TableHead>
-                    <TableHead>Student</TableHead>
-                    <TableHead>Components</TableHead>
-                    <TableHead>Purpose</TableHead>
-                    <TableHead>Return Date</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {pendingLoading ? (
-                    <TableRow><TableCell colSpan={6} className="text-center py-8">Loading...</TableCell></TableRow>
-                  ) : (pendingData?.data || []).length === 0 ? (
-                    <TableRow><TableCell colSpan={6} className="text-center py-8 text-muted-foreground">No pending requests</TableCell></TableRow>
-                  ) : (
-                    (pendingData?.data || []).map((r: any) => (
-                      <TableRow key={r.id}>
-                        <TableCell className="font-mono text-sm">{r.reference}</TableCell>
-                        <TableCell>{r.studentName}</TableCell>
-                        <TableCell>{renderItems(r)}</TableCell>
-                        <TableCell className="text-sm">{r.purpose || "-"}</TableCell>
-                        <TableCell className="text-sm">{new Date(r.requestedReturnDate).toLocaleDateString()}</TableCell>
-                        <TableCell className="text-right space-x-2">
-                          <Button size="sm" onClick={() => approveMutation.mutate(r.id)}>
-                            <CheckCircle className="h-4 w-4 mr-1" /> Approve
-                          </Button>
-                          <Button size="sm" variant="destructive" onClick={() => setRejectDialog(r)}>
-                            <XCircle className="h-4 w-4 mr-1" /> Reject
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </TabsContent>
+      {/* Pending */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg flex items-center gap-2">
+            Pending ({(pendingData?.data || []).length})
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Reference</TableHead>
+                <TableHead>Student</TableHead>
+                <TableHead>Components</TableHead>
+                <TableHead>Purpose</TableHead>
+                <TableHead>Return Date</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>{pendingRows}</TableBody>
+          </Table>
+        </CardContent>
+      </Card>
 
-        {/* Approved */}
-        <TabsContent value="approved">
-          <Card>
-            <CardContent className="p-0">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Reference</TableHead>
-                    <TableHead>Student</TableHead>
-                    <TableHead>Components</TableHead>
-                    <TableHead>Purpose</TableHead>
-                    <TableHead>Return Date</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {approvedLoading ? (
-                    <TableRow><TableCell colSpan={6} className="text-center py-8">Loading...</TableCell></TableRow>
-                  ) : (approvedData?.data || []).length === 0 ? (
-                    <TableRow><TableCell colSpan={6} className="text-center py-8 text-muted-foreground">No approved requests awaiting issue</TableCell></TableRow>
-                  ) : (
-                    (approvedData?.data || []).map((r: any) => (
-                      <TableRow key={r.id}>
-                        <TableCell className="font-mono text-sm">{r.reference}</TableCell>
-                        <TableCell>{r.studentName}</TableCell>
-                        <TableCell>{renderItems(r)}</TableCell>
-                        <TableCell className="text-sm">{r.purpose || "-"}</TableCell>
-                        <TableCell className="text-sm">{new Date(r.requestedReturnDate).toLocaleDateString()}</TableCell>
-                        <TableCell className="text-right">
-                          <Button size="sm" onClick={() => issueMutation.mutate(r.id)}>
-                            <Package className="h-4 w-4 mr-1" /> Issue Components
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </TabsContent>
+      {/* Approved */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg flex items-center gap-2">
+            Approved ({(approvedData?.data || []).length})
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Reference</TableHead>
+                <TableHead>Student</TableHead>
+                <TableHead>Components</TableHead>
+                <TableHead>Purpose</TableHead>
+                <TableHead>Return Date</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>{approvedRows}</TableBody>
+          </Table>
+        </CardContent>
+      </Card>
 
-        {/* Issued */}
-        <TabsContent value="issued">
-          <Card>
-            <CardContent className="p-0">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Reference</TableHead>
-                    <TableHead>Student</TableHead>
-                    <TableHead>Components</TableHead>
-                    <TableHead>Issued Date</TableHead>
-                    <TableHead>Status</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {issuedLoading ? (
-                    <TableRow><TableCell colSpan={5} className="text-center py-8">Loading...</TableCell></TableRow>
-                  ) : (issuedData?.data || []).length === 0 ? (
-                    <TableRow><TableCell colSpan={5} className="text-center py-8 text-muted-foreground">No issued items</TableCell></TableRow>
-                  ) : (
-                    (issuedData?.data || []).map((r: any) => (
-                      <TableRow key={r.id}>
-                        <TableCell className="font-mono text-sm">{r.reference}</TableCell>
-                        <TableCell>{r.studentName}</TableCell>
-                        <TableCell>{renderItems(r)}</TableCell>
-                        <TableCell className="text-sm">{new Date(r.createdAt).toLocaleDateString()}</TableCell>
-                        <TableCell><Badge variant="outline">{r.status}</Badge></TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+      {/* Issued */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg flex items-center gap-2">
+            Issued ({(issuedData?.data || []).length})
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Reference</TableHead>
+                <TableHead>Student</TableHead>
+                <TableHead>Components</TableHead>
+                <TableHead>Issued Date</TableHead>
+                <TableHead>Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>{issuedRows}</TableBody>
+          </Table>
+        </CardContent>
+      </Card>
 
       <Dialog open={!!rejectDialog} onOpenChange={() => setRejectDialog(null)}>
         <DialogContent>
