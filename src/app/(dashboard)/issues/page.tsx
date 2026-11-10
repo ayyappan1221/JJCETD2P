@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,9 @@ async function fetchApprovedRequests() {
 
 export default function IssuesPage() {
   const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const roles = (session?.user as any)?.roles || [];
+  const canManage = roles.some((r: string) => ["ADMIN", "D2P_INCHARGE"].includes(r));
   const [status, setStatus] = useState("all");
   const [page, setPage] = useState(1);
   const [issueDialog, setIssueDialog] = useState(false);
@@ -39,6 +43,7 @@ export default function IssuesPage() {
   const { data: approvedData } = useQuery({
     queryKey: ["approved-requests"],
     queryFn: fetchApprovedRequests,
+    enabled: canManage,
   });
 
   const issueMutation = useMutation({
@@ -65,9 +70,11 @@ export default function IssuesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Component Issues</h1>
-        <Button onClick={() => setIssueDialog(true)}>
-          <ArrowRightLeft className="h-4 w-4 mr-2" /> Issue Component
-        </Button>
+        {canManage && (
+          <Button onClick={() => setIssueDialog(true)}>
+            <ArrowRightLeft className="h-4 w-4 mr-2" /> Issue Component
+          </Button>
+        )}
       </div>
 
       <Select value={status} onValueChange={(v) => { setStatus(v || "all"); setPage(1); }}>
@@ -119,22 +126,24 @@ export default function IssuesPage() {
         </CardContent>
       </Card>
 
-      <Dialog open={issueDialog} onOpenChange={setIssueDialog}>
-        <DialogContent>
-          <DialogHeader><DialogTitle>Issue Approved Component</DialogTitle></DialogHeader>
-          <div className="space-y-4">
-            <Select value={selectedRequest} onValueChange={(v) => setSelectedRequest(v || "")}>
-              <SelectTrigger><SelectValue placeholder="Select approved request" /></SelectTrigger>
-              <SelectContent>
-                {(approvedData?.data || []).map((r: any) => (
-                  <SelectItem key={r.id} value={r.id}>{r.reference} - {r.studentName} - {r.componentName} (qty: {r.quantity})</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button onClick={() => issueMutation.mutate(selectedRequest)} className="w-full" disabled={!selectedRequest || issueMutation.isPending}>Issue</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {canManage && (
+        <Dialog open={issueDialog} onOpenChange={setIssueDialog}>
+          <DialogContent>
+            <DialogHeader><DialogTitle>Issue Approved Component</DialogTitle></DialogHeader>
+            <div className="space-y-4">
+              <Select value={selectedRequest} onValueChange={(v) => setSelectedRequest(v || "")}>
+                <SelectTrigger><SelectValue placeholder="Select approved request" /></SelectTrigger>
+                <SelectContent>
+                  {(approvedData?.data || []).map((r: any) => (
+                    <SelectItem key={r.id} value={r.id}>{r.reference} - {r.studentName} - {r.componentName} (qty: {r.quantity})</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Button onClick={() => issueMutation.mutate(selectedRequest)} className="w-full" disabled={!selectedRequest || issueMutation.isPending}>Issue</Button>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }

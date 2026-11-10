@@ -303,7 +303,16 @@ export default function ComponentsPage() {
               <TableBody>
                 {(data?.data || []).map((comp: any) => (
                   <TableRow key={comp.id}>
-                    <TableCell className="font-mono text-sm">{comp.code}</TableCell>
+                    <TableCell className="font-mono text-sm">
+                      <div className="flex items-center gap-2">
+                        {comp.imageUrl ? (
+                          <img src={comp.imageUrl} alt={comp.name} className="h-8 w-8 rounded object-contain bg-slate-100 shrink-0" />
+                        ) : (
+                          <Package className="h-8 w-8 text-slate-300 shrink-0" />
+                        )}
+                        {comp.code}
+                      </div>
+                    </TableCell>
                     <TableCell className="font-medium">{comp.name}</TableCell>
                     <TableCell>{comp.categoryName || "-"}</TableCell>
                     <TableCell className="text-right">{comp.totalQuantity}</TableCell>
