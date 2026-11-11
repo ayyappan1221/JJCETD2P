@@ -42,6 +42,7 @@ export default function IssuesReturnsPage() {
   const { data: session } = useSession();
   const roles = (session?.user as any)?.roles || [];
   const canManage = roles.some((r: string) => ["ADMIN", "D2P_INCHARGE"].includes(r));
+  const isStudent = !canManage;
 
   const [active, setActive] = useState<"issues" | "returns" | "overdue">("issues");
   const [status, setStatus] = useState("all");
@@ -100,14 +101,14 @@ export default function IssuesReturnsPage() {
 
   const sections = [
     { key: "issues" as const, label: "Issues", count: (data?.data || []).length, icon: ArrowRightLeft, color: "from-blue-500 to-blue-600", bg: "bg-blue-50" },
-    { key: "returns" as const, label: "Returns", count: (activeData?.data || []).length, icon: RotateCcw, color: "from-green-500 to-emerald-600", bg: "bg-green-50" },
+    ...(canManage ? [{ key: "returns" as const, label: "Returns", count: (activeData?.data || []).length, icon: RotateCcw, color: "from-green-500 to-emerald-600", bg: "bg-green-50" }] : []),
     { key: "overdue" as const, label: "Overdue", count: (overdueData?.data || []).length, icon: AlertTriangle, color: "from-red-500 to-rose-600", bg: "bg-red-50" },
   ];
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Issues & Returns</h1>
+        <h1 className="text-2xl font-bold">{canManage ? "Issues & Returns" : "My Issues"}</h1>
         {canManage && active === "issues" && (
           <Button onClick={() => setIssueDialog(true)}><ArrowRightLeft className="h-4 w-4 mr-2" /> Issue Component</Button>
         )}
@@ -192,7 +193,7 @@ export default function IssuesReturnsPage() {
         </Card>
       )}
 
-      {active === "returns" && (
+      {active === "returns" && canManage && (
         <Card>
           <CardHeader><CardTitle className="text-lg">Component Returns</CardTitle></CardHeader>
           <CardContent className="p-0">
@@ -299,6 +300,7 @@ export default function IssuesReturnsPage() {
         </Dialog>
       )}
 
+      {canManage && (
       <Dialog open={!!returnDialog} onOpenChange={() => setReturnDialog(null)}>
         <DialogContent>
           <DialogHeader><DialogTitle>Record Return</DialogTitle></DialogHeader>
@@ -310,6 +312,7 @@ export default function IssuesReturnsPage() {
           </div>
         </DialogContent>
       </Dialog>
+      )}
     </div>
   );
 }
